@@ -6,7 +6,10 @@ import HeroBG from "@/../public/homepage/herobg.avif";
 export default function page() {
   return (
     <>
-      <div id="hero" className="h-[70vh] relative w-full overflow-hidden">
+      <div
+        id="hero"
+        className="min-h-[60vh] h-auto relative w-full overflow-hidden"
+      >
         <Image
           src={HeroBG}
           alt="Hero Image BG"

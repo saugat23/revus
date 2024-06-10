@@ -12,10 +12,10 @@ import WelcomeBG from "@/../public/homepage/welcomebg.avif";
 export default function Page() {
   return (
     <>
-      <section className="h-[60vh] w-full bg-white">
+      <section className="h-auto w-full bg-white">
         <div className="flex flex-col h-full max-w-6xl px-3 mx-auto">
-          <form className="-mt-24 h-auto w-full px-6 py-12 shadow-xl bg-white border-b-2 border-black flex justify-center items-center space-x-2 z-40 font-montserrat text-sm font-semibold uppercase">
-            <div className="w-[28%] flex flex-col justify-center items-start space-y-2">
+          <form className="-mt-24 h-auto w-full px-6 py-12 shadow-xl bg-white border-b-2 border-black flex flex-col lg:flex-row justify-center items-center space-y-3 space-x-0 lg:space-y-0 lg:space-x-2 z-40 font-montserrat text-sm font-semibold uppercase">
+            <div className="lg:w-[28%] w-full flex flex-col justify-center items-start space-y-2">
               <label className="rent_date">
                 <span className="text-gray-500">01 </span>
                 WHEN
@@ -25,7 +25,7 @@ export default function Page() {
                 appearance="subtle"
               />
             </div>
-            <div className="w-[28%] flex flex-col justify-center items-start space-y-2">
+            <div className="w-full lg:w-[28%] flex flex-col justify-center items-start space-y-2">
               <label className="rent_date">
                 <span className="text-gray-500">02 </span>
                 SELECT MAKE
@@ -48,7 +48,7 @@ export default function Page() {
                 </option>
               </select>
             </div>
-            <div className="w-[28%] flex flex-col justify-center items-start space-y-2">
+            <div className="w-full lg:w-[28%] flex flex-col justify-center items-start space-y-2">
               <label className="rent_date">
                 <span className="text-gray-500">03 </span>
                 SELECT A MODEL
@@ -65,15 +65,15 @@ export default function Page() {
             </div>
             <Button
               type="submit"
-              className="self-end w-[16%] py-8 bg-secondary"
+              className="self-end w-full lg:w-[16%] py-8 bg-secondary"
             >
               SEARCH
             </Button>
           </form>
 
-          <div className="w-full h-full flex flex-col justify-end items-center">
-            <div className="w-full flex justify-between items-center">
-              <div className="w-3/5 h-auto flex flex-col justify-center items-start space-y-6 font-semibold text-primary">
+          <div className="w-full h-full flex flex-col justify-end items-center mt-12">
+            <div className="w-full flex flex-col lg:flex-row justify-between items-center space-y-5 lg:space-y-0">
+              <div className="w-full lg:w-3/5 h-auto flex flex-col justify-center items-start space-y-6 font-semibold text-primary">
                 <p className="font-montserrat text-xs uppercase">
                   helps you to find your next car easily
                 </p>
@@ -85,7 +85,7 @@ export default function Page() {
                   over thing that may tree. Signs fish made tree you days seas
                   heaven. Called seas, shall isn’t.
                 </p>
-                <div className="w-full flex justify-evenly items-center">
+                <div className="w-full flex flex-col lg:flex-row space-y-4 lg:space-y-0 justify-evenly items-center py-5 lg:py-0">
                   <div className="flex flex-col items-center space-y-6">
                     <Image
                       src={WelcomeSVG1}
@@ -112,7 +112,7 @@ export default function Page() {
                   </div>
                 </div>
               </div>
-              <div className="w-2/5 h-auto">
+              <div className="hidden lg:block lg:w-2/5 h-auto">
                 <Image
                   priority
                   src={WelcomeBG}
