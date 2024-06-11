@@ -10,7 +10,8 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-secondary relative overflow-hidden text-secondary-foreground transition-bg button-hovertransition",
+          "buttonCustom text-primary-foreground font-montserrat font-medium",
+        dark: "buttonCustomDark text-primary-foreground font-montserrat font-medium",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:

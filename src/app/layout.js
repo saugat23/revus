@@ -1,4 +1,4 @@
-import { Montserrat, Lato, Merriweather } from "next/font/google";
+import { Montserrat, Lato, Kumbh_Sans } from "next/font/google";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 import "rsuite/dist/rsuite-no-reset.min.css";
@@ -15,11 +15,9 @@ const lato = Lato({
   variable: "--font-lato",
 });
 
-const merriweather = Merriweather({
-  weight: ["400", "700"],
+const kumbhSans = Kumbh_Sans({
   subsets: ["latin"],
-  style: ["italic"],
-  variable: "--font-merriweather",
+  variable: "--font-kumbhsans",
 });
 
 export const metadata = {
@@ -31,7 +29,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${montserrat.variable} ${lato.variable} ${merriweather.variable}`}
+        className={`${montserrat.variable} ${lato.variable} ${kumbhSans.variable}`}
       >
         <NextTopLoader showSpinner={false} />
         <CustomProvider>{children}</CustomProvider>

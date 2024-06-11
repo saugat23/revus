@@ -17,13 +17,17 @@ import BMW7 from "@/../public/homepage/bmw-7.jpg";
 import AudiR8 from "@/../public/homepage/audi-r8.jpg";
 import Jaguar from "@/../public/homepage/jaguar.jpg";
 import { Button } from "@/components/ui/button";
+import Autoplay from "embla-carousel-autoplay";
 
 export default function Page() {
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    slidesToScroll: "auto",
-    loop: "true",
-    align: "end",
-  });
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    {
+      slidesToScroll: 1,
+      loop: "true",
+      align: "end",
+    },
+    [Autoplay()],
+  );
 
   const {
     prevBtnDisabled,
@@ -162,7 +166,11 @@ export default function Page() {
             </div>
           </div>
           <div className="w-full max-w-6xl mx-auto flex flex-col justify-center items-start">
-            <Button type="button" className="font-medium text-sm py-8 px-6">
+            <Button
+              type="button"
+              variant="dark"
+              className="font-medium text-sm py-8 px-6"
+            >
               View All Cars Listings
             </Button>
           </div>

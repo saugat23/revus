@@ -7,6 +7,8 @@ import Discount from "./Discount";
 import Tabs from "./Tabs";
 import Offers from "./Offers";
 import Listing from "./Listing";
+import Customers from "./Customers";
+import Footer from "./Footer";
 
 export default function Page() {
   return (
@@ -19,6 +21,8 @@ export default function Page() {
         <Tabs />
         <Offers />
         <Listing />
+        <Customers />
+        <Footer />
       </main>
     </>
   );

@@ -98,7 +98,7 @@ export default function Page() {
             <h2 className="font-bold xl:text-4xl md:text-2xl text-lg flex items-center my-1">
               Our Sales <span className="text-secondary ml-2">Team</span>
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 mt-10 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mt-10 gap-8">
               <SalesCard
                 imgSrc={SalesMember}
                 name="Alex Leeman"
@@ -107,14 +107,14 @@ export default function Page() {
               />
               <SalesCard
                 imgSrc={SalesMember}
-                name="Alex Leeman"
-                position="Director"
+                name="Diego Carlos"
+                position="Marketing Manager"
                 number="1 755 302 8579"
               />
               <SalesCard
                 imgSrc={SalesMember}
-                name="Alex Leeman"
-                position="Director"
+                name="William Henry"
+                position="Sales Manager"
                 number="1 755 302 8579"
               />
             </div>

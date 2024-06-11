@@ -18,7 +18,9 @@ export default function Page() {
             </p>
           </div>
           <div className="w-full lg:w-auto flex justify-around lg:justify-center items-center space-x-8">
-            <Button className="py-7 px-6">GET CAR NOW</Button>
+            <Button variant="dark" className="py-7 px-6">
+              GET CAR NOW
+            </Button>
             <div className="flex flex-col justify-center space-y-2">
               <h3 className="font-lato font-normal text-primary-foreground text-sm">
                 Call Us For Booking Vehicle

@@ -74,7 +74,7 @@ module.exports = {
       fontFamily: {
         montserrat: ["var(--font-montserrat)"],
         lato: ["var(--font-lato)"],
-        merriweather: ["var(--font-merriweather)"],
+        kumbhsans: ["var(--font-kumbhsans)"],
       },
     },
   },
