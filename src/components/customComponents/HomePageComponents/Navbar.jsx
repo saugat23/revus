@@ -75,7 +75,7 @@ export default function Page() {
               quality={80}
             />
           </Link>
-          <ul className="list-none hidden xl:flex items-center space-x-5">
+          <ul className="list-none hidden xl:flex items-center space-x-7">
             <li>
               <Link
                 href="/"
@@ -121,11 +121,18 @@ export default function Page() {
             </li>
             <li>
               <Link
-                href="/login"
-                className={`uppercase flex items-center ${pathname.includes("login") && "text-secondary"}`}
+                href="/user_login"
+                className={`hover:text-secondary uppercase ${pathname.includes("user_login") && "text-secondary"}`}
               >
-                <FaUserCircle className="inline w-4 h-4 mr-2" />
-                login
+                user login
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/host_login"
+                className={`hover:text-secondary uppercase ${pathname.includes("host_login") && "text-secondary"}`}
+              >
+                host login
               </Link>
             </li>
           </ul>
