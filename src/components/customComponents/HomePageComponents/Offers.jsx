@@ -10,18 +10,35 @@ export default function Page() {
       <section className="bg-primary h-auto">
         <div className="max-w-6xl mx-auto px-3 w-full h-full py-16 flex flex-col lg:flex-row justify-between items-center space-y-6 lg:space-y-0">
           <div className="flex flex-col justify-center space-y-3">
-            <h1 className="font-montserrat font-bold text-primary-foreground text-3xl xl:text-4xl">
+            <h1
+              data-aos="fade-up"
+              data-aos-duration="400"
+              className="font-montserrat font-bold text-primary-foreground text-3xl xl:text-4xl"
+            >
               35% discounts & Special Offers
             </h1>
-            <p className="font-lato font-normal text-primary-foreground">
+            <p
+              data-aos="fade-up"
+              data-aos-duration="400"
+              className="font-lato font-normal text-primary-foreground"
+            >
               Rent a Car for 7 Days and get 2 days extra absolutely FREE
             </p>
           </div>
           <div className="w-full lg:w-auto flex justify-around lg:justify-center items-center space-x-8">
-            <Button variant="dark" className="py-7 px-6">
+            <Button
+              data-aos="fade-up"
+              data-aos-duration="400"
+              variant="dark"
+              className="py-7 px-6"
+            >
               GET CAR NOW
             </Button>
-            <div className="flex flex-col justify-center space-y-2">
+            <div
+              data-aos="fade-up"
+              data-aos-duration="400"
+              className="flex flex-col justify-center space-y-2"
+            >
               <h3 className="font-lato font-normal text-primary-foreground text-sm">
                 Call Us For Booking Vehicle
               </h3>

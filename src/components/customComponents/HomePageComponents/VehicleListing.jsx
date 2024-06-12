@@ -7,6 +7,7 @@ import { LuCalendarDays } from "react-icons/lu";
 import { LuGauge } from "react-icons/lu";
 import { MdOutlineAccountTree } from "react-icons/md";
 import { FaRegStar } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 export default function Page({
   imgSrc,
@@ -29,7 +30,12 @@ export default function Page({
 
   return (
     <>
-      <div className="h-auto w-auto flex flex-col justify-center items-center bg-primary text-primary-foreground hover:bg-secondary transition-colors duration-300 ease-in-out cursor-pointer relative group">
+      <motion.div
+        initial={{ x: "-100vw" }}
+        animate={{ x: 0 }}
+        transition={{ type: "spring", stiffness: 60 }}
+        className="h-auto w-auto flex flex-col justify-center items-center bg-primary text-primary-foreground hover:bg-secondary transition-colors duration-300 ease-in-out cursor-pointer relative group"
+      >
         <div className="h-3/4 w-full relative">
           <Image
             src={imgSrc}
@@ -78,7 +84,7 @@ export default function Page({
             ${price}/hour
           </h1>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 }

@@ -49,7 +49,7 @@ export default function Page() {
             </h2>
           </div>
           <div className="w-full flex justify-end items-center">
-            <div className="embla max-w-[80%] w-[80%] ml-auto">
+            <div className="embla  !w-full !2xl:max-w-[80%] !2xl:w-[80%] ml-auto">
               <div className="embla__viewport" ref={emblaRef}>
                 <div className="embla__container">
                   <div className="embla__slide">
@@ -151,7 +151,7 @@ export default function Page() {
                 </div>
               </div>
 
-              <div className="embla__controls">
+              <div className="!hidden !xl:flex embla__controls">
                 <div className="embla__buttons">
                   <PrevButton
                     onClick={onPrevButtonClick}

@@ -38,7 +38,7 @@ export default function Page() {
 
   return (
     <>
-      <section className="h-auto w-full bg-[url('/homepage/customerbg.jpeg')] object-center object-fill">
+      <section className="h-auto w-full bg-[url('/homepage/customerbg.jpeg')] object-center object-fill overflow-hidden">
         <div className="w-full max-w-7xl mx-auto px-3 py-12 flex flex-col justify-center items-center font-montserrat text-primary-foreground tracking-wider">
           <p className="font-semibold text-xs uppercase my-1">
             what people say about us

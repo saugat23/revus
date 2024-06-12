@@ -25,7 +25,11 @@ export default function Page() {
                 appearance="subtle"
               />
             </div>
-            <div className="w-full lg:w-[28%] flex flex-col justify-center items-start space-y-2">
+            <div
+              data-aos="fade-up"
+              data-aos-duration="400"
+              className="w-full lg:w-[28%] flex flex-col justify-center items-start space-y-2"
+            >
               <label className="rent_date">
                 <span className="text-gray-500">02 </span>
                 SELECT MAKE
@@ -48,7 +52,11 @@ export default function Page() {
                 </option>
               </select>
             </div>
-            <div className="w-full lg:w-[28%] flex flex-col justify-center items-start space-y-2">
+            <div
+              data-aos="fade-up"
+              data-aos-duration="400"
+              className="w-full lg:w-[28%] flex flex-col justify-center items-start space-y-2"
+            >
               <label className="rent_date">
                 <span className="text-gray-500">03 </span>
                 SELECT A MODEL
@@ -64,6 +72,8 @@ export default function Page() {
               </select>
             </div>
             <Button
+              data-aos="fade-up"
+              data-aos-duration="400"
               type="submit"
               className="self-end w-full lg:w-[16%] py-8 bg-secondary"
             >
@@ -73,7 +83,11 @@ export default function Page() {
 
           <div className="w-full h-full flex flex-col justify-end items-center mt-12">
             <div className="w-full flex flex-col lg:flex-row justify-between items-center space-y-5 lg:space-y-0">
-              <div className="w-full lg:w-3/5 h-auto flex flex-col justify-center items-start space-y-6 font-semibold text-primary">
+              <div
+                data-aos="fade-up"
+                data-aos-duration="400"
+                className="w-full lg:w-3/5 h-auto flex flex-col justify-center items-start space-y-6 font-semibold text-primary"
+              >
                 <p className="font-montserrat text-xs uppercase">
                   helps you to find your next car easily
                 </p>
@@ -86,7 +100,11 @@ export default function Page() {
                   heaven. Called seas, shall isn’t.
                 </p>
                 <div className="w-full flex flex-col lg:flex-row space-y-4 lg:space-y-0 justify-evenly items-center py-5 lg:py-0">
-                  <div className="flex flex-col items-center space-y-6">
+                  <div
+                    data-aos="fade-right"
+                    data-aos-duration="400"
+                    className="flex flex-col items-center space-y-6"
+                  >
                     <Image
                       src={WelcomeSVG1}
                       alt="Welcome SVG 1"
@@ -94,7 +112,11 @@ export default function Page() {
                     />
                     <p className="text-sm">Fast & Easy Booking</p>
                   </div>
-                  <div className="flex flex-col items-center space-y-6">
+                  <div
+                    data-aos="fade-right"
+                    data-aos-duration="600"
+                    className="flex flex-col items-center space-y-6"
+                  >
                     <Image
                       src={WelcomeSVG2}
                       alt="Welcome SVG 2"
@@ -102,7 +124,11 @@ export default function Page() {
                     />
                     <p className="text-sm">Many Pickup Locations</p>
                   </div>
-                  <div className="flex flex-col items-center space-y-6">
+                  <div
+                    data-aos="fade-right"
+                    data-aos-duration="800"
+                    className="flex flex-col items-center space-y-6"
+                  >
                     <Image
                       src={WelcomeSVG3}
                       alt="Welcome SVG 3"

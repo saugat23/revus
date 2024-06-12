@@ -43,13 +43,26 @@ export default function Page() {
     <>
       <section className="h-auto bg-primary">
         <div className="max-w-6xl mx-auto w-full px-3 py-12 flex flex-col justify-center items-center space-y-7 text-white font-montserrat">
-          <h1 className="font-bold xl:text-4xl md:text-3xl text-2xl">
+          <h1
+            data-aos="fade-up"
+            data-aos-duration="400"
+            className="font-bold xl:text-4xl md:text-3xl text-2xl"
+          >
             Call Us Today For Booking Your Next Ride
           </h1>
-          <h4 className="font-normal xl:text-base text-sm">
+          <h4
+            data-aos="fade-up"
+            data-aos-duration="400"
+            className="font-normal xl:text-base text-sm"
+          >
             Brought him them seas lesser yielding without also bring you unto
           </h4>
-          <Button variant="dark" className="py-8 px-7">
+          <Button
+            data-aos="fade-up"
+            data-aos-duration="400"
+            variant="dark"
+            className="py-8 px-7"
+          >
             BOOKING CAR
           </Button>
         </div>
@@ -82,10 +95,16 @@ export default function Page() {
               priority
               className="object-center object-cover w-28"
             />
-            <div className="w-[40%] flex justify-evenly items-center">
-              <Link href="#"><FaFacebookF className="w-9 h-9 p-3 bg-primary rounded-full fill-white hover:bg-secondary cursor-pointer" /></Link>
-              <Link href="#"><FaTwitter className="w-9 h-9 p-3 bg-primary rounded-full fill-white hover:bg-secondary cursor-pointer" /></Link>
-              <Link href="#"><FaLinkedin className="w-9 h-9 p-3 bg-primary rounded-full fill-white hover:bg-secondary cursor-pointer" /></Link>
+            <div className="w-full lg:w-[40%] flex justify-evenly items-center">
+              <Link href="#">
+                <FaFacebookF className="w-9 h-9 p-3 bg-primary rounded-full fill-white hover:bg-secondary cursor-pointer" />
+              </Link>
+              <Link href="#">
+                <FaTwitter className="w-9 h-9 p-3 bg-primary rounded-full fill-white hover:bg-secondary cursor-pointer" />
+              </Link>
+              <Link href="#">
+                <FaLinkedin className="w-9 h-9 p-3 bg-primary rounded-full fill-white hover:bg-secondary cursor-pointer" />
+              </Link>
               <Link href="#">
                 <FaYoutube className="w-9 h-9 p-3 bg-primary rounded-full fill-white hover:bg-secondary cursor-pointer" />
               </Link>
@@ -99,8 +118,12 @@ export default function Page() {
                 <FaBehance className="w-9 h-9 p-3 bg-primary rounded-full fill-white hover:bg-secondary cursor-pointer" />
               </Link>
             </div>
-            <div className="w-full flex justfiy-around items-center font-montserrat text-primary-foreground">
-              <div className="w-1/3 flex flex-col justify-center items-start space-y-8 text-sm px-4">
+            <div className="w-full flex flex-col lg:flex-row justufy-center items-start lg:justfiy-around lg:items-center space-y-7 lg:space-y-0 font-montserrat text-primary-foreground">
+              <div
+                data-aos="fade-right"
+                data-aos-duration="400"
+                className="w-full lg:w-1/3 flex flex-col justify-center items-start space-y-8 text-sm px-4"
+              >
                 <h2 className="text-base font-bold">About Us</h2>
                 <p className="font-medium font-gray-200">
                   Ceipisicing elit sed do eiusmod tempor laboe dolore magna
@@ -123,7 +146,11 @@ export default function Page() {
                   </p>
                 </div>
               </div>
-              <div className="w-1/3 flex flex-col justify-center items-start space-y-8 text-sm px-6">
+              <div
+                data-aos="fade-right"
+                data-aos-duration="600"
+                className="w-full lg:w-1/3 flex flex-col justify-center items-start space-y-8 text-sm px-6"
+              >
                 <h2 className="text-base font-bold">Customer Links</h2>
                 <div className="flex w-full justify-between items-start text-gray-200">
                   <ul className="flex flex-col justify-center items-start space-y-3">
@@ -231,7 +258,11 @@ export default function Page() {
                   </ul>
                 </div>
               </div>
-              <div className="w-1/3 flex flex-col justify-center items-start space-y-8 text-sm px-4">
+              <div
+                data-aos="fade-right"
+                data-aos-duration="800"
+                className="w-full lg:w-1/3 flex flex-col justify-center items-start space-y-8 text-sm px-4"
+              >
                 <h2 className="text-base font-bold">Subscribe Newsletter</h2>
                 <p className="font-medium font-gray-200">
                   Get our weekly newsletter for latest car news exclusive offers

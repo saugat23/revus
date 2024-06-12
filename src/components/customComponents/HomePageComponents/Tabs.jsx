@@ -111,7 +111,11 @@ export default function Page() {
                 </div>
               </TabsTrigger>
             </TabsList>
-            <div className="w-full lg:w-1/2">
+            <div
+              data-aos="fade-up"
+              data-aos-duration="400"
+              className="w-full lg:w-1/2"
+            >
               <TabsContent
                 value="mobileapp"
                 className="w-full flex flex-col justify-center items-start space-y-5"
