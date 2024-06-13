@@ -102,16 +102,16 @@
 }
 
 .progressBar {
-  width: 80%;
+  width: 12rem;
   height: 10px;
   background-color: #e0e0e0;
-  border-radius: 5px;
+  border-radius: 8px;
   overflow: hidden;
 }
 
 .progress {
   height: 100%;
-  background-color: #3b82f6;
+  background-color: hsl(var(--primary));
   transition: width 0.5s ease;
 }
 
