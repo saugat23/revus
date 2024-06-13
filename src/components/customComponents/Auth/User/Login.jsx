@@ -3,11 +3,17 @@
 import Image from "next/image";
 import React from "react";
 import AuthBG from "@/../public/authbg.jpeg";
-import { FaKey, FaMobile, FaUser } from "react-icons/fa6";
-import { IoMdMail } from "react-icons/io";
+import { FaKey, FaMobile } from "react-icons/fa6";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
+  const router = useRouter();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    router.push("/user_dashboard");
+  }
   return (
     <>
       <section className="h-auto max-w-screen bg-white">
@@ -21,7 +27,10 @@ export default function Page() {
               className="object-center object-cover relative"
             />
           </div>
-          <form className="py-8 max-w-6xl w-full mx-auto px-3 flex flex-col justify-center items-start font-montserrat text-primary">
+          <form
+            onSubmit={handleSubmit}
+            className="py-8 max-w-6xl w-full mx-auto px-3 flex flex-col justify-center items-start font-montserrat text-primary"
+          >
             <h1 className="font-bold xl:text-2xl md:text-xl text-base">
               Login
             </h1>

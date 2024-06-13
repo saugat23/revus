@@ -1,4 +1,4 @@
-import { Montserrat, Lato, Kumbh_Sans } from "next/font/google";
+import { Montserrat, Lato, Kumbh_Sans, Handlee } from "next/font/google";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 import "rsuite/dist/rsuite-no-reset.min.css";

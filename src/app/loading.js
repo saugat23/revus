@@ -1,10 +1,9 @@
-import React from "react";
-import ProgressLoading from "@/components/customComponents/ProgressLoading";
+import { HandleOnComplete } from "@/lib/custom-router";
 
-export default function Page() {
+export default function Loading() {
   return (
     <>
-      <ProgressLoading />
+      <HandleOnComplete />
     </>
   );
 }
