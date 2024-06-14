@@ -28,7 +28,7 @@ export default function Page() {
             <TabsList className="!grid !grid-cols-2 bg-white w-full lg:w-1/2 gap-1">
               <TabsTrigger
                 value="mobileapp"
-                className="flex flex-col !p-6 h-auto shadow-lg"
+                className="flex flex-col !p-6 h-auto shadow-lg data-[state=active]:bg-secondary data-[state=active]:fill-white data-[state=active]:text-secondary-foreground"
               >
                 <p className="w-full text-sm md:text-base xl:text-lg font-bold text-left">
                   01
@@ -42,7 +42,7 @@ export default function Page() {
               </TabsTrigger>
               <TabsTrigger
                 value="fuelplans"
-                className="flex flex-col !p-6 h-auto shadow-lg"
+                className="flex flex-col !p-6 h-auto shadow-lg data-[state=active]:bg-secondary data-[state=active]:fill-white data-[state=active]:text-secondary-foreground"
               >
                 <p className="w-full text-sm md:text-base xl:text-lg font-bold text-left">
                   02
@@ -56,7 +56,7 @@ export default function Page() {
               </TabsTrigger>
               <TabsTrigger
                 value="longcarrental"
-                className="flex flex-col !p-6 h-auto shadow-lg"
+                className="flex flex-col !p-6 h-auto shadow-lg data-[state=active]:bg-secondary data-[state=active]:fill-white data-[state=active]:text-secondary-foreground"
               >
                 <p className="w-full text-sm md:text-base xl:text-lg font-bold text-left">
                   03
@@ -70,7 +70,7 @@ export default function Page() {
               </TabsTrigger>
               <TabsTrigger
                 value="onewaycarrental"
-                className="flex flex-col !p-6 h-auto shadow-lg"
+                className="flex flex-col !p-6 h-auto shadow-lg data-[state=active]:bg-secondary data-[state=active]:fill-white data-[state=active]:text-secondary-foreground"
               >
                 <p className="w-full text-sm md:text-base xl:text-lg font-bold text-left">
                   04
@@ -84,7 +84,7 @@ export default function Page() {
               </TabsTrigger>
               <TabsTrigger
                 value="meetingsandgroups"
-                className="flex flex-col !p-6 h-auto shadow-lg"
+                className="flex flex-col !p-6 h-auto shadow-lg data-[state=active]:bg-secondary data-[state=active]:fill-white data-[state=active]:text-secondary-foreground"
               >
                 <p className="w-full text-sm md:text-base xl:text-lg font-bold text-left">
                   05
@@ -98,7 +98,7 @@ export default function Page() {
               </TabsTrigger>
               <TabsTrigger
                 value="studentcarrental"
-                className="flex flex-col !p-6 h-auto shadow-lg"
+                className="flex flex-col !p-6 h-auto shadow-lg data-[state=active]:bg-secondary data-[state=active]:fill-white data-[state=active]:text-secondary-foreground"
               >
                 <p className="w-full text-sm md:text-base xl:text-lg font-bold text-left">
                   06

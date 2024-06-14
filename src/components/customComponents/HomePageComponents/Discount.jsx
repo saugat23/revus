@@ -18,6 +18,7 @@ import AudiR8 from "@/../public/homepage/audi-r8.jpg";
 import Jaguar from "@/../public/homepage/jaguar.jpg";
 import { Button } from "@/components/ui/button";
 import Autoplay from "embla-carousel-autoplay";
+import Link from "next/link";
 
 export default function Page() {
   const [emblaRef, emblaApi] = useEmblaCarousel(
@@ -54,98 +55,122 @@ export default function Page() {
                 <div className="embla__container">
                   <div className="embla__slide">
                     <div className="w-full h-full">
-                      <CarListing
-                        imgSrc={Peugeot}
-                        model="Peugeot 508 Sports"
-                        price={44}
-                        make={2019}
-                        range={2000}
-                        type="Petrol"
-                      />
+                      <Link href={`/car_details/1`}>
+                        <CarListing
+                          id={1}
+                          imgSrc={Peugeot}
+                          model="Peugeot 508 Sports"
+                          price={44}
+                          make={2019}
+                          range={2000}
+                          type="Petrol"
+                        />
+                      </Link>
                     </div>
                   </div>
                   <div className="embla__slide">
                     <div className="w-full h-full">
-                      <CarListing
-                        imgSrc={Mercedes}
-                        model="Mercedes AMG"
-                        price={20}
-                        make={2016}
-                        range={12000}
-                        type="LPG"
-                      />
+                      <Link href={`/car_details/2`}>
+                        <CarListing
+                          id={2}
+                          imgSrc={Mercedes}
+                          model="Mercedes AMG"
+                          price={20}
+                          make={2016}
+                          range={12000}
+                          type="LPG"
+                        />
+                      </Link>
                     </div>
                   </div>
                   <div className="embla__slide">
                     <div className="w-full h-full">
-                      <CarListing
-                        imgSrc={Ford}
-                        model="Ford Focus ST"
-                        price={62}
-                        make={2019}
-                        range={20000}
-                        type="Diesel"
-                      />
+                      <Link href={`/car_details/3`}>
+                        <CarListing
+                          id={3}
+                          imgSrc={Ford}
+                          model="Ford Focus ST"
+                          price={62}
+                          make={2019}
+                          range={20000}
+                          type="Diesel"
+                        />
+                      </Link>
                     </div>
                   </div>
                   <div className="embla__slide">
                     <div className="w-full h-full">
-                      <CarListing
-                        imgSrc={BMWFX}
-                        model="BMW FX"
-                        price={72}
-                        make={2019}
-                        range={8000}
-                        type="Diesel"
-                      />
+                      <Link href={`/car_details/4`}>
+                        <CarListing
+                          id={4}
+                          imgSrc={BMWFX}
+                          model="BMW FX"
+                          price={72}
+                          make={2019}
+                          range={8000}
+                          type="Diesel"
+                        />
+                      </Link>
                     </div>
                   </div>
                   <div className="embla__slide">
                     <div className="w-full h-full">
-                      <CarListing
-                        imgSrc={AudiS5}
-                        model="Audi S5 Sportsback"
-                        price={72}
-                        make={2019}
-                        range={16000}
-                        type="Electric"
-                      />
+                      <Link href={`/car_details/5`}>
+                        <CarListing
+                          id={5}
+                          imgSrc={AudiS5}
+                          model="Audi S5 Sportsback"
+                          price={72}
+                          make={2019}
+                          range={16000}
+                          type="Electric"
+                        />
+                      </Link>
                     </div>
                   </div>
                   <div className="embla__slide">
                     <div className="w-full h-full">
-                      <CarListing
-                        imgSrc={BMW7}
-                        model="BMW 7 Series"
-                        price={100}
-                        make={2019}
-                        range={12000}
-                        type="Electric"
-                      />
+                      <Link href={`/car_details/6`}>
+                        <CarListing
+                          id={6}
+                          imgSrc={BMW7}
+                          model="BMW 7 Series"
+                          price={100}
+                          make={2019}
+                          range={12000}
+                          type="Electric"
+                        />
+                      </Link>
                     </div>
                   </div>
                   <div className="embla__slide">
                     <div className="w-full h-full">
-                      <CarListing
-                        imgSrc={AudiR8}
-                        model="Audi R8"
-                        price={112}
-                        make={2022}
-                        range={12000}
-                        type="Diesel"
-                      />
+                      <Link href={`/car_details/7`}>
+                        <CarListing
+                          id={7}
+                          imgSrc={AudiR8}
+                          model="Audi R8"
+                          price={112}
+                          make={2022}
+                          range={12000}
+                          type="Diesel"
+                        />
+                      </Link>
                     </div>
                   </div>
                   <div className="embla__slide">
                     <div className="w-full h-full">
-                      <CarListing
-                        imgSrc={Jaguar}
-                        model="Jaguar XJ50"
-                        price={102}
-                        make={2020}
-                        range={15000}
-                        type="LPG"
-                      />
+                      <Link href={`/car_details/8`}>
+                        <CarListing
+                          id={8}
+                          imgSrc={Jaguar}
+                          model="Jaguar XJ50"
+                          price={102}
+                          make={2020}
+                          range={15000}
+                          type="LPG"
+                        />
+                      </Link>
                     </div>
                   </div>
                 </div>

@@ -29,7 +29,7 @@ import {
 import { FaTwitter } from "react-icons/fa";
 import Link from "next/link";
 
-export default function Page() {
+export function TopFooter() {
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       slidesToScroll: 1,
@@ -86,6 +86,13 @@ export default function Page() {
           </div>
         </div>
       </section>
+    </>
+  );
+}
+
+export function BottomFooter() {
+  return (
+    <>
       <footer className="bg-[#121820] h-auto flex flex-col justify-center items-center">
         <div className="w-full border-b border-gray-300">
           <div className="py-12 max-w-6xl mx-auto w-full flex flex-col justify-center items-center space-y-14">

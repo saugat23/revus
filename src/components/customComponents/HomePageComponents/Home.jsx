@@ -8,7 +8,7 @@ import Tabs from "./Tabs";
 import Offers from "./Offers";
 import Listing from "./Listing";
 import Customers from "./Customers";
-import Footer from "./Footer";
+import { TopFooter, BottomFooter } from "./Footer";
 import "aos/dist/aos.css";
 import AOS from "aos";
 
@@ -36,7 +36,8 @@ export default function Page() {
         <Offers />
         <Listing />
         <Customers />
-        <Footer />
+        <TopFooter />
+        <BottomFooter />
       </main>
     </>
   );

@@ -15,12 +15,6 @@ import { SlCallIn } from "react-icons/sl";
 import { usePathname } from "next/navigation";
 import { IoIosMenu } from "react-icons/io";
 import { IoMdClose } from "react-icons/io";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 
 export default function Page() {
   const [isHidden, setIsHidden] = useState(false);
@@ -90,24 +84,6 @@ export default function Page() {
                 className={`hover:text-secondary uppercase ${pathname.includes("about") && "text-secondary"}`}
               >
                 about
-                <TiArrowSortedDown className="ml-1 inline w-4 h-4 fill-gray-400" />
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/inventory"
-                className={`hover:text-secondary uppercase ${pathname.includes("inventory") && "text-secondary"}`}
-              >
-                inventory
-                <TiArrowSortedDown className="ml-1 inline w-4 h-4 fill-gray-400" />
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/news"
-                className={`hover:text-secondary uppercase ${pathname.includes("news") && "text-secondary"}`}
-              >
-                news
                 <TiArrowSortedDown className="ml-1 inline w-4 h-4 fill-gray-400" />
               </Link>
             </li>
@@ -183,26 +159,6 @@ export default function Page() {
                     onClick={handleListClick}
                   >
                     about
-                    <TiArrowSortedDown className="ml-1 inline w-4 h-4 fill-gray-400" />
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/inventory"
-                    className={`hover:text-secondary uppercase ${pathname.includes("inventory") && "text-secondary"}`}
-                    onClick={handleListClick}
-                  >
-                    inventory
-                    <TiArrowSortedDown className="ml-1 inline w-4 h-4 fill-gray-400" />
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/news"
-                    className={`hover:text-secondary uppercase ${pathname.includes("news") && "text-secondary"}`}
-                    onClick={handleListClick}
-                  >
-                    news
                     <TiArrowSortedDown className="ml-1 inline w-4 h-4 fill-gray-400" />
                   </Link>
                 </li>

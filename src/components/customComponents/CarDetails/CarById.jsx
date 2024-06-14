@@ -11,9 +11,17 @@ import Jaguar from "@/../public/homepage/jaguar.jpg";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { DateRangePicker } from "rsuite";
 import { Button } from "@/components/ui/button";
-import { FaPhone, FaPhoneAlt, FaUser } from "react-icons/fa";
+import CarDetailBG from "@/../public/cardetailbg.jpeg";
 import { FaCircleUser } from "react-icons/fa6";
 import { MdOutlinePhone } from "react-icons/md";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 export default function Page() {
   const [featuredImage, setFeaturedImage] = useState(AudiR8);
@@ -24,8 +32,48 @@ export default function Page() {
 
   return (
     <>
-      <section className="h-auto p-6">
-        <div className="w-full flex justify-center items-start space-x-8 font-montserrat text-base">
+      <section className="h-auto mt-24">
+        <div className="min-h-[30vh] h-auto relative w-full overflow-hidden">
+          <div className="h-full w-full">
+            <Image
+              priority
+              quality={90}
+              fill={true}
+              src={CarDetailBG}
+              alt="Car Detail BG"
+              className="object-cover bg-cover h-full relative"
+            />
+          </div>
+          <div className="absolute top-1/3 lg:top-[45%] left-[40%] -translate-x-1/2 -translate-y-1/2 bg-[#141b22]/90 h-[100vh] w-72 md:w-96 lg:w-[36rem] -rotate-12 flex flex-col justify-center pt-16 lg:pt-10 xl:pt-16 items-center space-y-8">
+            <h1 className="text-white font-montserrat font-bold xl:text-5xl md:text-4xl text-2xl rotate-12">
+              Lamborghini Urus
+            </h1>
+
+            <div className="ml-3 text-white font-montserrat xl:text-base text-sm font-semibold rotate-12">
+              <Breadcrumb>
+                <BreadcrumbList>
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="/">Vehicle Lisings</BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="/">Peugeot</BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+                  </BreadcrumbItem>
+                </BreadcrumbList>
+              </Breadcrumb>
+            </div>
+          </div>
+        </div>
+
+        <div className="max-w-6xl mx-auto flex justify-center items-start space-x-8 font-montserrat text-base py-12">
           <div className="w-3/4 flex flex-col justify-center items-center space-y-6">
             <div className="w-full flex flex-col justify-center items-start space-y-6 h-auto">
               <div className="w-full flex justify-start items-center">
@@ -147,26 +195,26 @@ export default function Page() {
                   <TabsList>
                     <TabsTrigger
                       value="description"
-                      className="font-semibold data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-secondary"
+                      className="p-4 font-semibold data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-secondary"
                     >
                       Vehicle Description
                     </TabsTrigger>
                     <TabsTrigger
                       value="features"
-                      className="font-semibold data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-secondary"
+                      className="p-4 font-semibold data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-secondary"
                     >
                       Features & Options
                     </TabsTrigger>
                     <TabsTrigger
                       value="review"
-                      className="font-semibold data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-secondary"
+                      className="p-4 font-semibold data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-secondary"
                     >
                       Reviews
                     </TabsTrigger>
                   </TabsList>
                   <TabsContent
                     value="description"
-                    className="font-medium text-sm"
+                    className="font-medium text-sm py-3"
                   >
                     Lorem ipsum dolor sit amet, qui minim labore adipisicing
                     minim sint cillum sint consectetur cupidatat. Lorem ipsum
@@ -184,7 +232,10 @@ export default function Page() {
                     cupidatat ullamco ut ea consectetur et est culpa et culpa
                     duis.
                   </TabsContent>
-                  <TabsContent value="features" className="font-medium text-sm">
+                  <TabsContent
+                    value="features"
+                    className="font-medium text-sm py-3"
+                  >
                     Lorem ipsum dolor sit amet, qui minim labore adipisicing
                     minim sint cillum sint consectetur cupidatat. Lorem ipsum
                     dolor sit amet, officia excepteur ex fugiat reprehenderit
@@ -201,7 +252,10 @@ export default function Page() {
                     cupidatat ullamco ut ea consectetur et est culpa et culpa
                     duis.
                   </TabsContent>
-                  <TabsContent value="review" className="font-medium text-sm">
+                  <TabsContent
+                    value="review"
+                    className="font-medium text-sm py-3"
+                  >
                     Lorem ipsum dolor sit amet, qui minim labore adipisicing
                     minim sint cillum sint consectetur cupidatat. Lorem ipsum
                     dolor sit amet, officia excepteur ex fugiat reprehenderit
