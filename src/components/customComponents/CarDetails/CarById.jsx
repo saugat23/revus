@@ -32,7 +32,7 @@ export default function Page() {
 
   return (
     <>
-      <section className="h-auto mt-24">
+      <section className="h-auto mt-24 max-w-screen w-screen">
         <div className="min-h-[30vh] h-auto relative w-full overflow-hidden">
           <div className="h-full w-full">
             <Image
@@ -73,28 +73,24 @@ export default function Page() {
           </div>
         </div>
 
-        <div className="max-w-6xl mx-auto flex justify-center items-start space-x-8 font-montserrat text-base py-12">
-          <div className="w-3/4 flex flex-col justify-center items-center space-y-6">
+        <div className="max-w-6xl w-full px-3 mx-auto flex flex-col lg:flex-row lg:px-0 justify-center items-start space-y-4 space-x-0 lg:space-y-0 lg:space-x-8 font-montserrat text-base py-12">
+          <div className="w-full lg:w-3/4 flex flex-col justify-center items-center space-y-6">
             <div className="w-full flex flex-col justify-center items-start space-y-6 h-auto">
               <div className="w-full flex justify-start items-center">
                 <Image
                   src={featuredImage}
                   alt="Car Image"
                   priority
-                  width={500}
-                  height={400}
-                  className="w-full h-96 object-center object-cover"
-                  quality={75}
+                  className="w-full object-center object-cover"
+                  quality={80}
                 />
               </div>
-              <div className="w-full flex justify-stretch items-center space-x-4">
+              <div className="w-full flex lg:justify-stretch justify-between items-center space-x-4 overflow-hidden">
                 <Image
                   src={Peugeot}
                   alt={`Car Image`}
                   priority
-                  width={100}
-                  height={80}
-                  className="w-1/4 h-full cursor-pointer"
+                  className="object-center object-cover cursor-pointer"
                   onClick={() => handleGalleryClick(Peugeot)}
                   quality={75}
                 />
@@ -102,9 +98,7 @@ export default function Page() {
                   src={Mercedes}
                   alt={`Car Image`}
                   priority
-                  width={100}
-                  height={80}
-                  className="w-1/4 h-full cursor-pointer"
+                  className="object-center object-cover cursor-pointer"
                   onClick={() => handleGalleryClick(Mercedes)}
                   quality={75}
                 />
@@ -112,9 +106,7 @@ export default function Page() {
                   src={Ford}
                   alt={`Car Image`}
                   priority
-                  width={100}
-                  height={80}
-                  className="w-1/4 h-full cursor-pointer"
+                  className="hidden lg:inline object-center object-cover cursor-pointer"
                   onClick={() => handleGalleryClick(Ford)}
                   quality={75}
                 />
@@ -122,9 +114,7 @@ export default function Page() {
                   src={BMW7}
                   alt={`Car Image`}
                   priority
-                  width={100}
-                  height={80}
-                  className="w-1/4 h-full cursor-pointer"
+                  className="hidden lg:block object-center object-cover cursor-pointer"
                   onClick={() => handleGalleryClick(BMW7)}
                   quality={75}
                 />
@@ -132,9 +122,7 @@ export default function Page() {
                   src={Jaguar}
                   alt={`Car Image`}
                   priority
-                  width={100}
-                  height={80}
-                  className="w-1/4 h-full cursor-pointer"
+                  className="hidden lg:blockobject-center object-cover cursor-pointer"
                   onClick={() => handleGalleryClick(Jaguar)}
                   quality={75}
                 />
@@ -144,70 +132,98 @@ export default function Page() {
               <h2 className="w-full font-bold text-base text-primary py-5 border-b border-b-gray-300">
                 Vehicle Specifications
               </h2>
-              <div className="w-full flex justify-between items-start text-sm py-8">
-                <ul className="flex flex-col space-y-3 font-normal">
-                  <li>Make:</li>
-                  <li>Year:</li>
-                  <li>VIN</li>
-                  <li>Fuel:</li>
-                  <li>Horsepower (HP) :</li>
-                  <li>Doors:</li>
-                  <li>Drive:</li>
-                  <li>Color:</li>
-                  <li>Price Type:</li>
+              <div className="w-full flex flex-col lg:flex-row justify-between space-y-3 lg:space-y-0 items-start text-sm py-8">
+                <ul className="w-full lg:w-1/2 flex flex-col space-y-3 font-semibold text-left">
+                  <li className="w-full justify-between flex items-center pr-16">
+                    <span className="font-normal">Make: </span>
+                    <span className="">Lamborghini</span>
+                  </li>
+                  <li className="w-full justify-between flex items-center pr-16">
+                    <span className="font-normal">Year: </span>
+                    <span>2019</span>
+                  </li>
+                  <li className="w-full justify-between flex items-center pr-16">
+                    <span className="font-normal">VIN: </span>
+                    <span>1VXEDYROTER</span>
+                  </li>
+                  <li className="w-full justify-between flex items-center pr-16">
+                    <span className="font-normal">Fuel: </span>
+                    <span>Hybrid</span>
+                  </li>
+                  <li className="w-full justify-between flex items-center pr-16">
+                    <span className="font-normal">Horsepower(HP): </span>
+                    <span>230</span>
+                  </li>
+                  <li className="w-full justify-between flex items-center pr-16">
+                    <span className="font-normal">Doors: </span>
+                    <span>2</span>
+                  </li>
+                  <li className="w-full justify-between flex items-center pr-16">
+                    <span className="font-normal">Seats: </span>
+                    <span>Front</span>
+                  </li>
+                  <li className="w-full justify-between flex items-center pr-16">
+                    <span className="font-normal">Interior Color: </span>
+                    <span>Blue</span>
+                  </li>
+                  <li className="w-full justify-between flex items-center pr-16">
+                    <span className="font-normal">Warranty: </span>
+                    <span>Fixed</span>
+                  </li>
                 </ul>
-                <ul className="flex flex-col space-y-3 font-semibold">
-                  <li>Lamborghini</li>
-                  <li>2019</li>
-                  <li>1VXEDYROTER</li>
-                  <li>Hybrid</li>
-                  <li>230</li>
-                  <li>2</li>
-                  <li>Front</li>
-                  <li>Blue</li>
-                  <li>Fixed</li>
-                </ul>
-                <ul className="flex flex-col space-y-3 font-normal">
-                  <li>Stock Status:</li>
-                  <li>Mileage:</li>
-                  <li>Version</li>
-                  <li>Engine, cm3:</li>
-                  <li>Transimission:</li>
-                  <li>Condition:</li>
-                  <li>Seats:</li>
-                  <li>Inferior Color:</li>
-                  <li>Warranty:</li>
-                </ul>
-                <ul className="flex flex-col space-y-3 font-semibold">
-                  <li>In Stock</li>
-                  <li>20000</li>
-                  <li>3.8 HDI</li>
-                  <li>3900</li>
-                  <li>Automatic</li>
-                  <li>New</li>
-                  <li>5</li>
-                  <li>Brown</li>
-                  <li>Yes</li>
+                <ul className="w-full lg:w-1/2 flex flex-col space-y-3 font-semibold">
+                  <li className="w-full justify-between flex items-center pr-16">
+                    <span className="font-normal">Stock Status: </span>
+                    <span>In Stock</span>
+                  </li>
+                  <li className="w-full justify-between flex items-center pr-16">
+                    <span className="font-normal">Mileage: </span>
+                    <span>2000</span>
+                  </li>
+                  <li className="w-full justify-between flex items-center pr-16">
+                    <span className="font-normal">Version: </span>
+                    <span>3.8 HDI</span>
+                  </li>
+                  <li className="w-full justify-between flex items-center pr-16">
+                    <span className="font-normal">Engine, cm3: </span>
+                    <span>3900</span>
+                  </li>
+                  <li className="w-full justify-between flex items-center pr-16">
+                    <span className="font-normal">Transmission: </span>
+                    <span>Automatic</span>
+                  </li>
+                  <li className="w-full justify-between flex items-center pr-16">
+                    <span className="font-normal">Condition: </span>
+                    <span>New</span>
+                  </li>
+                  <li className="w-full justify-between flex items-center pr-16">
+                    <span className="font-normal">Color: </span>
+                    <span>Brown</span>
+                  </li>
+                  <li className="w-full justify-between flex items-center pr-16">
+                    <span className="font-normal">Price Type: </span>
+                    <span>Fixed</span>
+                  </li>
                 </ul>
               </div>
               <div className="py-8">
                 <Tabs defaultValue="description" className="w-full">
-                  <TabsList>
+                  <TabsList className="!flex !flex-col !lg:flex-row">
                     <TabsTrigger
                       value="description"
-                      className="p-4 font-semibold data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-secondary"
+                      className="!text-left !lg:text-left p-4 font-semibold data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-secondary"
                     >
                       Vehicle Description
                     </TabsTrigger>
                     <TabsTrigger
                       value="features"
-                      className="p-4 font-semibold data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-secondary"
+                      className="!text-left !lg:text-left p-4 font-semibold data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-secondary"
                     >
                       Features & Options
                     </TabsTrigger>
                     <TabsTrigger
                       value="review"
-                      className="p-4 font-semibold data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-secondary"
+                      className="!text-left !lg:text-left p-4 font-semibold data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-secondary"
                     >
                       Reviews
                     </TabsTrigger>
@@ -276,7 +292,7 @@ export default function Page() {
               </div>
             </div>
           </div>
-          <div className="w-1/4 flex flex-col justify-center items-center space-y-5 font-montserrat text-sm text-primary font-semibold">
+          <div className="w-full lg:w-1/4 flex flex-col justify-center items-center space-y-5 font-montserrat text-sm text-primary font-semibold">
             <div className="w-full bg-[#F1F5FA] flex flex-col justify-center items-center space-y-5 px-4">
               <div className="w-full bg-[#253241] flex flex-col items-center text-primary-foreground -mx-4">
                 <h2 className="w-full py-4 border-b border-b-gray-500 text-center">
