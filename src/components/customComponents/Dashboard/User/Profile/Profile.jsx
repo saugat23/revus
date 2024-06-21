@@ -89,8 +89,8 @@ export default function Page() {
           <h2 className="xl:text-lg text-base font-semibold font-montserrat text-primary">
             Car Availablity
           </h2>
-          <div className="w-full flex justify-between items-center font-montserrat space-x-8 text-sm text-gray-500">
-            <div className="w-1/5 px-3 rounded-lg border border-gray-300 flex justify-between items-center ">
+          <div className="w-full flex flex-col lg:flex-row justify-between items-center font-montserrat space-y-3 space-x-0 lg:space-y-0 lg:space-x-8 text-sm text-gray-500">
+            <div className="w-full lg:w-1/5 px-3 rounded-lg border border-gray-300 flex justify-between items-center ">
               <IoCarOutline className="w-5 h-5 fill-gray-500" />
               <select className="p-3 outline-none bg-white">
                 <option className="p-3" value="">
@@ -110,7 +110,7 @@ export default function Page() {
                 </option>
               </select>
             </div>
-            <div className="w-1/5 px-3 rounded-lg border border-gray-300 flex justify-between items-center ">
+            <div className="w-full lg:w-1/5 px-3 rounded-lg border border-gray-300 flex justify-between items-center ">
               <IoCarOutline className="w-5 h-5 fill-gray-500" />
               <select className="p-3 outline-none bg-white">
                 <option className="p-3" value="">
@@ -130,16 +130,16 @@ export default function Page() {
                 </option>
               </select>
             </div>
-            <div className="w-1/5 px-3 rounded-lg border border-gray-300 flex justify-between items-center ">
+            <div className="w-full lg:w-1/5 px-3 rounded-lg border border-gray-300 flex justify-between items-center ">
               <input
                 type="date"
                 name="date"
                 id="date"
                 placeholder="Date"
-                className="p-3 outline-none bg-white"
+                className="p-3 outline-none bg-white w-full"
               />
             </div>
-            <div className="w-1/5 px-3 rounded-lg border border-gray-300 flex justify-between items-center ">
+            <div className="w-full lg:w-1/5 px-3 rounded-lg border border-gray-300 flex justify-between items-center ">
               <CiClock2 className="w-5 h-5 fill-gray-500" />
               <select className="p-3 outline-none bg-white">
                 <option className="p-3" value="">
@@ -159,7 +159,7 @@ export default function Page() {
                 </option>
               </select>
             </div>
-            <div className="w-1/5">
+            <div className="w-full lg:w-1/5">
               <button
                 type="button"
                 className="text-white font-semibold bg-[#006aff] p-3 rounded-lg w-full"
@@ -174,7 +174,7 @@ export default function Page() {
           <h2 className="xl:text-lg text-base font-semibold font-montserrat text-primary">
             Listings
           </h2>
-          <div className="px-4 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {carListings.map((car) => (
               <Link
                 href={`/user_dashboard/profile/car_details/${car.id}`}

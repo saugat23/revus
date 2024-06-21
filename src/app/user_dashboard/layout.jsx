@@ -7,6 +7,7 @@ import Image from "next/image";
 import { Toaster } from "sonner";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
+import { IoIosMenu } from "react-icons/io";
 
 const Layout = ({ children }) => {
   const router = useRouter();
@@ -58,8 +59,13 @@ const Layout = ({ children }) => {
           </div>
         </div>
 
-        <div className="min-w-[85%] w-full md:w-[85%] bg-white ml-[15%]">
-          {children}
+        <div>
+          <div className="block md:hidden h-6">
+            <IoIosMenu className="h-8 w-8" />
+          </div>
+          <div className="min-w-[85%] w-full md:w-[85%] bg-white md:ml-[15%] mt-6">
+            {children}
+          </div>
         </div>
       </div>
     </>
