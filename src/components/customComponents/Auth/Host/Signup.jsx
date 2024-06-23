@@ -9,8 +9,9 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { Toaster, toast } from "sonner";
-import { HostSignup } from "@/services/api";
 import { TbLicense } from "react-icons/tb";
+import { HostSignup } from "@/services/api";
+import Loader from "@/components/customComponents/Loader";
 
 export default function Page() {
   const {
@@ -18,42 +19,59 @@ export default function Page() {
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
-    getValues,
   } = useForm();
 
   const router = useRouter();
 
   const [previewUrls, setPreviewUrls] = useState({
-    profile_img: "",
-    license_img: "",
+    profile_picture: "",
+    license_picture: "",
   });
+  const [loading, setLoading] = useState(false);
 
   function handleProfileChange(e) {
-    const file = e.target.files[0]; // Get the single file from the input
+    const file = e.target.files[0];
     setPreviewUrls((prevUrls) => ({
       ...prevUrls,
-      profile_img: URL.createObjectURL(file),
+      profile_picture: URL.createObjectURL(file),
     }));
   }
 
   function handleLicenseChange(e) {
-    const file = e.target.files[0]; // Get the single file from the input
+    const file = e.target.files[0];
     setPreviewUrls((prevUrls) => ({
       ...prevUrls,
-      license_img: URL.createObjectURL(file),
+      license_picture: URL.createObjectURL(file),
     }));
   }
 
   async function onSubmit(data) {
-    console.log(data);
+    setLoading(true);
+    console.log("Form data: ", data);
+
+    const formData = new FormData();
+    formData.append("username", data.username);
+    formData.append("whatsapp_number", data.whatsapp_number);
+    formData.append("email", data.email);
+    formData.append("password", data.password);
+    formData.append("licence_no", data.license_no);
+    formData.append("profile_picture", data.profile_picture[0]); // Append file
+    formData.append("licence_picture", data.license_picture[0]); // Append file
+
+    for (let [key, value] of formData.entries()) {
+      console.log(key, value);
+    }
+
     try {
-      const response = await HostSignup(data);
+      const response = await HostSignup(formData);
       toast.success("Registered Successfully!!");
-      console.log("Response: ", response);
+      console.log("Response: ", response.data);
       router.push("/host_login");
     } catch (error) {
       console.error("Error", error);
       toast.error("Register Failed!!");
+    } finally {
+      setLoading(false);
     }
     reset();
   }
@@ -159,9 +177,9 @@ export default function Page() {
                 <p className="font-semibold text-sm">Choose Profile Picture</p>
                 <label
                   htmlFor="profile_picture"
-                  className="w-full bg-gray-100 h-20 flex flex-col justify-center items-center mt-4 cursor-pointer"
+                  className="w-full bg-gray-100 h-16 flex flex-col justify-center items-center mt-4 cursor-pointer"
                   style={{
-                    backgroundImage: `url(${previewUrls.profile_img || "/uploadfile.png"})`,
+                    backgroundImage: `url(${previewUrls.profile_picture || "/uploadfile.png"})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
@@ -184,9 +202,9 @@ export default function Page() {
                 <p className="font-semibold text-sm">Choose License Picture</p>
                 <label
                   htmlFor="license_picture"
-                  className="w-full bg-gray-100 h-20 flex flex-col justify-center items-center mt-4 cursor-pointer"
+                  className="w-full bg-gray-100 h-16 flex flex-col justify-center items-center mt-4 cursor-pointer"
                   style={{
-                    backgroundImage: `url(${previewUrls.license_img || "/uploadfile.png"})`,
+                    backgroundImage: `url(${previewUrls.license_picture || "/uploadfile.png"})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
@@ -209,8 +227,15 @@ export default function Page() {
               <button
                 type="submit"
                 className="py-3 px-20 rounded-lg font-semibold text-primary-foreground bg-[#006AFF] hover:bg-[#004099] transition-colors ease-in-out duration-300"
+                disabled={isSubmitting}
               >
-                Sign Up
+                {loading ? (
+                  <div className="mx-auto flex items-center justify-center gap-4">
+                    <p>Sign Up...</p> <Loader />
+                  </div>
+                ) : (
+                  "Sign Up"
+                )}
               </button>
             </div>
             <div className="w-full flex justify-center items-center mt-4">

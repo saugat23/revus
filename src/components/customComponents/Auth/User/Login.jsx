@@ -1,12 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import AuthBG from "@/../public/authbg.jpeg";
-import { FaKey, FaMobile } from "react-icons/fa6";
+import { FaKey, FaMobile, FaUser } from "react-icons/fa6";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { Login } from "@/services/api";
+import { toast } from "sonner";
+import { Toaster } from "sonner";
+import Loader from "@/components/customComponents/Loader";
+import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 
 export default function Page() {
   const {
@@ -14,28 +19,30 @@ export default function Page() {
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
-    getValues,
   } = useForm();
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  async function onSubmit() {
-    const loginData = FormData();
-    loginData.append("email", email);
-    loginData.append("password", password);
+  async function onSubmit(data) {
+    setLoading(true);
     try {
-      const response = await Login(loginData);
+      const response = await Login(data);
       toast.success("Logged in! Successfully!!");
+      Cookies.set("token_login", response.token, { expires: 7 });
       console.log("response : ", response);
       router.push("/user_dashboard");
     } catch (error) {
       console.error("Error: ", error);
       toast.error("Login Failed!!");
+    } finally {
+      setLoading(false);
     }
     reset();
   }
 
   return (
     <>
+      <Toaster richColors position="bottom-right" expand />
       <section className="h-auto max-w-screen bg-white">
         <div className="flex flex-col justify-center space-y-4">
           <div className="h-80 w-full relative">
@@ -60,10 +67,10 @@ export default function Page() {
             <div className="w-full relative mt-7">
               <FaMobile className="inline w-4 h-4 fill-gray-600 absolute top-1/2 left-5 -translate-x-1/2 -translate-y-1/2" />
               <input
+                type="email"
                 {...register("email", {
                   required: "Email is required!",
                 })}
-                type="email"
                 placeholder="Email"
                 className="bg-gray-100 rounded-lg pl-10 pr-3 py-4 w-full h-full font-medium text-sm outline-none"
               />
@@ -74,10 +81,10 @@ export default function Page() {
             <div className="w-full relative mt-4">
               <FaKey className="inline w-4 h-4 fill-gray-600 absolute top-1/2 left-5 -translate-x-1/2 -translate-y-1/2" />
               <input
-                {...register("password", {
-                  required: "Password is required",
-                })}
                 type="password"
+                {...register("password", {
+                  required: "Password is required!",
+                })}
                 placeholder="Password"
                 className="bg-gray-100 rounded-lg pl-10 pr-3 py-4 w-full h-full font-medium text-sm outline-none"
               />
@@ -89,10 +96,18 @@ export default function Page() {
               <button
                 type="submit"
                 className="py-3 px-20 rounded-lg font-semibold text-primary-foreground bg-[#006AFF] hover:bg-[#004099] transition-colors ease-in-out duration-300"
+                disabled={isSubmitting}
               >
-                Login
+                {loading ? (
+                  <div className="mx-auto flex items-center justify-center gap-4">
+                    <p>Log In...</p> <Loader />
+                  </div>
+                ) : (
+                  "Log In"
+                )}
               </button>
             </div>
+
             <div className="w-full flex justify-center items-center mt-4">
               <p className="text-primary text-xs font-medium">
                 Don&apos;t have an account?{" "}

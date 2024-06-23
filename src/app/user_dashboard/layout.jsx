@@ -8,11 +8,22 @@ import { Toaster } from "sonner";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { IoIosMenu } from "react-icons/io";
+import withAuth from "@/app/withAuth";
+import { FaArrowRight } from "react-icons/fa";
 
 const Layout = ({ children }) => {
   const router = useRouter();
   const pathname = usePathname();
   const items = dashboard_items;
+
+  function handleLogout() {
+    let currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() - 1);
+    let yesterday = currentDate;
+
+    Cookies.set("token_login", "", { expires: yesterday });
+    router.push("/user_login");
+  }
 
   return (
     <>
@@ -50,12 +61,15 @@ const Layout = ({ children }) => {
             </div>
           </div>
           <div className="w-full flex justify-center items-center px-3">
-            <Link
-              href="/"
-              className="py-3 w-full rounded-lg bg-[#474747] text-white text-center font-semibold font-montserrat"
+            <button
+              onClick={handleLogout}
+              className="py-3 w-full rounded-lg bg-[#474747] text-white text-center font-semibold font-montserrat group"
             >
-              Logout
-            </Link>
+              Logout{" "}
+              <span className="ml-1">
+                <FaArrowRight className="w-4 h-4 fill-white hidden group-hover:inline transition-all duration-400 ease-in-out" />
+              </span>
+            </button>
           </div>
         </div>
 
@@ -72,4 +86,4 @@ const Layout = ({ children }) => {
   );
 };
 
-export default Layout;
+export default withAuth(Layout);

@@ -11,6 +11,7 @@ import { useForm } from "react-hook-form";
 import { Toaster, toast } from "sonner";
 import { TbLicense } from "react-icons/tb";
 import { UserSignup } from "@/services/api";
+import Loader from "@/components/customComponents/Loader";
 
 export default function Page() {
   const {
@@ -23,15 +24,16 @@ export default function Page() {
   const router = useRouter();
 
   const [previewUrls, setPreviewUrls] = useState({
-    profile_img: "",
-    license_img: "",
+    profile_picture: "",
+    license_picture: "",
   });
+  const [loading, setLoading] = useState(false);
 
   function handleProfileChange(e) {
     const file = e.target.files[0];
     setPreviewUrls((prevUrls) => ({
       ...prevUrls,
-      profile_img: URL.createObjectURL(file),
+      profile_picture: URL.createObjectURL(file),
     }));
   }
 
@@ -39,11 +41,12 @@ export default function Page() {
     const file = e.target.files[0];
     setPreviewUrls((prevUrls) => ({
       ...prevUrls,
-      license_img: URL.createObjectURL(file),
+      license_picture: URL.createObjectURL(file),
     }));
   }
 
   async function onSubmit(data) {
+    setLoading(true);
     console.log("Form data: ", data);
 
     const formData = new FormData();
@@ -51,9 +54,9 @@ export default function Page() {
     formData.append("whatsapp_number", data.whatsapp_number);
     formData.append("email", data.email);
     formData.append("password", data.password);
-    formData.append("license_no", data.license_no);
+    formData.append("licence_no", data.license_no);
     formData.append("profile_picture", data.profile_picture[0]); // Append file
-    formData.append("license_picture", data.license_picture[0]); // Append file
+    formData.append("licence_picture", data.license_picture[0]); // Append file
 
     for (let [key, value] of formData.entries()) {
       console.log(key, value);
@@ -67,6 +70,8 @@ export default function Page() {
     } catch (error) {
       console.error("Error", error);
       toast.error("Register Failed!!");
+    } finally {
+      setLoading(false);
     }
     reset();
   }
@@ -174,7 +179,7 @@ export default function Page() {
                   htmlFor="profile_picture"
                   className="w-full bg-gray-100 h-16 flex flex-col justify-center items-center mt-4 cursor-pointer"
                   style={{
-                    backgroundImage: `url(${previewUrls.profile_img || "/uploadfile.png"})`,
+                    backgroundImage: `url(${previewUrls.profile_picture || "/uploadfile.png"})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
@@ -185,6 +190,7 @@ export default function Page() {
                   })}
                   id="profile_picture"
                   type="file"
+                  onChange={handleProfileChange}
                   className="bg-gray-100 rounded-lg pl-10 pr-3 py-4 w-full h-full font-medium text-sm outline-none hidden"
                 />
                 {errors.profile_picture && (
@@ -198,7 +204,7 @@ export default function Page() {
                   htmlFor="license_picture"
                   className="w-full bg-gray-100 h-16 flex flex-col justify-center items-center mt-4 cursor-pointer"
                   style={{
-                    backgroundImage: `url(${previewUrls.license_img || "/uploadfile.png"})`,
+                    backgroundImage: `url(${previewUrls.license_picture || "/uploadfile.png"})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
@@ -209,6 +215,7 @@ export default function Page() {
                   })}
                   id="license_picture"
                   type="file"
+                  onChange={handleLicenseChange}
                   className="bg-gray-100 rounded-lg pl-10 pr-3 py-4 w-full h-full font-medium text-sm outline-none hidden"
                 />
                 {errors.license_picture && (
@@ -222,7 +229,13 @@ export default function Page() {
                 className="py-3 px-20 rounded-lg font-semibold text-primary-foreground bg-[#006AFF] hover:bg-[#004099] transition-colors ease-in-out duration-300"
                 disabled={isSubmitting}
               >
-                Sign Up
+                {loading ? (
+                  <div className="mx-auto flex items-center justify-center gap-4">
+                    <p>Sign Up...</p> <Loader />
+                  </div>
+                ) : (
+                  "Sign Up"
+                )}
               </button>
             </div>
             <div className="w-full flex justify-center items-center mt-4">
