@@ -7,7 +7,7 @@ async function page() {
   const cookieStore = cookies();
   const loginToken = cookieStore.get("token_login");
   if (loginToken) {
-    redirect("/host_dashboard/");
+    redirect("/host_dashboard/profile");
   } else {
     redirect("/host_login");
   }
