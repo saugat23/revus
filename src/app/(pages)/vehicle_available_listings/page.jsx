@@ -8,7 +8,6 @@ const VehicleAvailableListings = dynamic(
       "@/components/customComponents/VehicleAvailableListings/VehicleAvailableListings"
     ),
   {
-    loading: <p></p>,
     ssr: false,
   },
 );
