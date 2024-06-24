@@ -22,7 +22,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { MdOutlinePhone } from "react-icons/md";
 import { FaCircleUser } from "react-icons/fa6";
-import Datepicker from "react-tailwindcss-datepicker";
 
 function Listings({ imgSrc, model, deposit, make, price }) {
   return (
@@ -198,22 +197,13 @@ export default function Page({ data }) {
 
         <div className="max-w-6xl w-full mx-auto px-3 lg:px-0 flex flex-col lg:flex-row justify-center items-start space-x-5 py-8 lg:py-10 xl:py-12 font-montserrat text-sm lg:text-base xl:text-lg">
           <div className="w-full lg:w-1/4 flex flex-col justify-center items-center space-y-5 font-montserrat text-sm text-primary font-semibold">
-            <div className="w-full bg-[#F1F5FA] flex flex-col justify-center items-center space-y-5 px-4">
-              <div className="w-full bg-[#253241] flex flex-col items-center text-primary-foreground -mx-4">
+            <div className="w-full bg-[#F1F5FA] flex flex-col justify-center items-center space-y-5">
+              <div className="w-full bg-[#253241] flex flex-col items-center text-primary-foreground">
                 <h2 className="w-full py-4 border-b border-b-gray-500 text-center">
-                  <span className="font-medium mb-1 mr-1">Price</span>$13/Hour
-                </h2>
-                <h2 className="w-full flex justify-center items-center">
-                  <span className="w-1/2 text-center border-r border-gray-500 py-4 ">
-                    $13/Hour
-                  </span>
-                  <span className="w-1/2 text-center py-4">$55/Day</span>
+                  <span className="font-bold mb-1">SEARCH A CAR</span>
                 </h2>
               </div>
-              <Datepicker
-                className="p-3 bg-primary-foreground w-full"
-                showShortcuts={true}
-              />
+
               <input
                 type="text"
                 name="pickup_location"

@@ -1,6 +1,17 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import VehicleAvailableListings from "@/components/customComponents/VehicleAvailableListings/VehicleAvailableListings";
+import dynamic from "next/dynamic";
+
+const VehicleAvailableListings = dynamic(
+  () =>
+    import(
+      "@/components/customComponents/VehicleAvailableListings/VehicleAvailableListings"
+    ),
+  {
+    loading: <p></p>,
+    ssr: false,
+  },
+);
 import { checkAvailability } from "@/services/api";
 import { useSearchParams } from "next/navigation";
 
