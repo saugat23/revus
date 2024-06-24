@@ -2,15 +2,18 @@
 
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Datepicker from "react-tailwindcss-datepicker";
 import WelcomeSVG1 from "@/../public/svgs/1.svg";
 import WelcomeSVG2 from "@/../public/svgs/2.svg";
 import WelcomeSVG3 from "@/../public/svgs/3.svg";
 import WelcomeBG from "@/../public/homepage/welcomebg.avif";
-import { checkAvailability } from "@/services/api";
+import { getAllCars } from "@/services/api";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
+  const router = useRouter();
+  const [cars, setCars] = useState([]);
   const [dateValue, setDateValue] = useState({
     startDate: null,
     endDate: null,
@@ -21,9 +24,9 @@ export default function Page() {
     setDateValue(newValue);
   };
 
-  const [model, setModel] = useState("");
+  const [searchModel, setSearchModel] = useState("");
   function handleModelChange(e) {
-    setModel(e.target.value);
+    setSearchModel(e.target.value);
   }
 
   const [loading, setLoading] = useState(false);
@@ -32,28 +35,50 @@ export default function Page() {
     e.preventDefault();
     setLoading(true);
     try {
-      const start_date = dateValue.startDate;
-      const end_date = dateValue.endDate;
-      const response = await checkAvailability(formData);
-      Router.push({
-        pathname: "/vehicle_available_listings",
-        query: {
-          start_date: `${dateValue.startDate}`,
-          end_date: `${dateValue.endDate}`,
-        },
-      });
+      let start_date = dateValue.startDate
+        ? new Date(dateValue.startDate).toISOString()
+        : null;
+      let end_date = dateValue.endDate
+        ? new Date(dateValue.endDate).toISOString()
+        : null;
+      const model = searchModel;
+
+      console.log("start_date:", start_date);
+      console.log("end_date:", end_date);
+
+      const query = new URLSearchParams({
+        start_date: start_date || "",
+        end_date: end_date || "",
+        model: model || "",
+      }).toString();
+
+      window.open(`/vehicle_available_listings?${query}`, "_blank");
     } catch (error) {
+      console.error("Error: ", error);
     } finally {
       setLoading(false);
     }
   }
 
+  useEffect(() => {
+    async function fetchCars() {
+      const response = await getAllCars();
+      console.log(response);
+      setCars(response.cars);
+    }
+
+    fetchCars();
+  }, []);
+
   return (
     <>
       <section className="h-auto w-full bg-white">
         <div className="flex flex-col h-full max-w-6xl px-3 mx-auto">
-          <form className="-mt-24 h-auto w-full px-6 py-12 shadow-xl bg-white border-b-2 border-black flex flex-col lg:flex-row justify-center items-center space-y-3 space-x-0 lg:space-y-0 lg:space-x-2 z-40 font-montserrat text-sm font-semibold uppercase">
-            <div className="lg:w-[28%] w-full flex flex-col justify-center items-start space-y-2">
+          <form
+            onSubmit={handleSubmit}
+            className="-mt-24 h-auto w-full px-6 py-12 shadow-xl bg-white border-b-2 border-black flex flex-col lg:flex-row justify-center items-center space-y-3 space-x-0 lg:space-y-0 lg:space-x-2 z-40 font-montserrat text-sm font-semibold uppercase"
+          >
+            <div className="lg:w-1/3 w-full flex flex-col justify-center items-start space-y-2">
               <label className="rent_date">
                 <span className="text-gray-500">01 </span>
                 WHEN
@@ -67,34 +92,7 @@ export default function Page() {
             <div
               data-aos="fade-up"
               data-aos-duration="400"
-              className="w-full lg:w-[28%] flex flex-col justify-center items-start space-y-2"
-            >
-              <label className="rent_date">
-                <span className="text-gray-500">02 </span>
-                SELECT MAKE
-              </label>
-              <select className="px-3 py-5 bg-[#f2f6f7] hover:bg-white hover:scale-y-105 hover:drop-shadow-lg transition-all ease w-full">
-                <option className="bg-white p-3" value="">
-                  All Makes
-                </option>
-                <option className="bg-white p-3" value="audi">
-                  Audi
-                </option>
-                <option className="bg-white p-3" value="bmw">
-                  BMW
-                </option>
-                <option className="bg-white p-3" value="bentley">
-                  Bentley
-                </option>
-                <option className="bg-white p-3" value="lamborghini">
-                  Lamborghini
-                </option>
-              </select>
-            </div>
-            <div
-              data-aos="fade-up"
-              data-aos-duration="400"
-              className="w-full lg:w-[28%] flex flex-col justify-center items-start space-y-2"
+              className="w-full lg:w-1/3 flex flex-col justify-center items-start space-y-2"
             >
               <label className="rent_date">
                 <span className="text-gray-500">03 </span>
@@ -104,13 +102,14 @@ export default function Page() {
                 onChange={handleModelChange}
                 className="px-3 py-5 bg-[#f2f6f7] hover:bg-white hover:scale-y-105 hover:drop-shadow-lg transition-all ease w-full"
               >
-                <option className="bg-white p-3" value=""></option>
-                <option className="bg-white p-3" value="a4">
-                  A4
-                </option>
-                <option className="bg-whtie p-3" value="a5">
-                  A5
-                </option>
+                <option value=""></option>
+                {cars.map((car) => {
+                  return (
+                    <option key={car.car_id} value={car.model}>
+                      {car.model}
+                    </option>
+                  );
+                })}
               </select>
             </div>
             <Button

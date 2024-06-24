@@ -6,22 +6,22 @@ const dashboard_items = [
   {
     title: "Profile",
     icon: <MdDashboard />,
-    link: "/user_dashboard/profile",
+    link: "/renter_dashboard/profile",
   },
   {
     title: "Past Bookings",
     icon: <GiDonerKebab />,
-    link: "/user_dashboard/past_bookings",
+    link: "/renter_dashboard/past_bookings",
   },
   {
     title: "Chat",
     icon: <MdCampaign />,
-    link: "/user_dashboard/chat",
+    link: "/renter_dashboard/chat",
   },
   {
     title: "Notifications",
     icon: <FaUserAlt />,
-    link: "/user_dashboard/notifications",
+    link: "/renter_dashboard/notifications",
   },
 ];
 

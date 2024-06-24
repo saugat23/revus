@@ -8,7 +8,7 @@ import { Toaster } from "sonner";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { IoIosMenu } from "react-icons/io";
-import withAuth from "@/app/withAuth";
+import withAuthRenter from "@/app/withAuthRenter";
 import { FaArrowRight } from "react-icons/fa";
 
 const Layout = ({ children }) => {
@@ -21,8 +21,8 @@ const Layout = ({ children }) => {
     currentDate.setDate(currentDate.getDate() - 1);
     let yesterday = currentDate;
 
-    Cookies.set("token_login", "", { expires: yesterday });
-    router.push("/user_login");
+    Cookies.set("token_loginrenter", "", { expires: yesterday });
+    router.push("/renter_login");
   }
 
   return (
@@ -86,4 +86,4 @@ const Layout = ({ children }) => {
   );
 };
 
-export default withAuth(Layout);
+export default withAuthRenter(Layout);

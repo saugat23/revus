@@ -4,15 +4,15 @@ import Cookies from "js-cookie";
 import { useEffect } from "react";
 import { toast } from "sonner";
 
-const withAuth = (WrappedComponent) => {
+const withAuthHost = (WrappedComponent) => {
   const Wrapper = (props) => {
     const router = useRouter();
 
     useEffect(() => {
-      const token = Cookies.get("token_login");
+      const token = Cookies.get("token_loginhost");
 
       if (!token) {
-        router.push("/user_login");
+        router.push("/host_login");
         toast.error("You have to Login to access Dashboard!");
       }
     });
@@ -23,4 +23,4 @@ const withAuth = (WrappedComponent) => {
   return Wrapper;
 };
 
-export default withAuth;
+export default withAuthHost;

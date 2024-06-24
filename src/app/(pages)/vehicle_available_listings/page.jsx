@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import VehicleAvailableListings from "@/components/customComponents/VehicleAvailableListings/VehicleAvailableListings";
 import { checkAvailability } from "@/services/api";
 import { useSearchParams } from "next/navigation";
@@ -8,19 +8,50 @@ export default function Page() {
   const vehicleParams = useSearchParams();
   const start_date = vehicleParams.get("start_date");
   const end_date = vehicleParams.get("end_date");
-  const data = {};
+  const model = vehicleParams.get("model");
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  async function fetchListings() {
-    const formData = {
-      start_date: start_date,
-      end_date: end_date,
-    };
+  useEffect(() => {
+    async function fetchListings() {
+      try {
+        console.log("Fetching listings with params:", {
+          start_date,
+          end_date,
+          model,
+        });
 
-    data = await checkAvailability(formData);
+        // Construct parameters object based on provided query params
+        const params = {};
+        if (start_date) params.start_date = start_date;
+        if (end_date) params.end_date = end_date;
+        if (model) params.model = model;
+
+        // Only make the API call if at least one parameter is present
+        if (Object.keys(params).length > 0) {
+          const response = await checkAvailability(params);
+          console.log("Fetched data:", response);
+          setData(response);
+        } else {
+          console.log("No parameters provided for API call");
+        }
+      } catch (error) {
+        console.error("Error fetching listings:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchListings();
+  }, [start_date, end_date, model]);
+
+  if (loading) {
+    return <div>Loading...</div>;
   }
+
   return (
     <>
-      <VehicleAvailableListings />
+      <VehicleAvailableListings data={data} />
     </>
   );
 }

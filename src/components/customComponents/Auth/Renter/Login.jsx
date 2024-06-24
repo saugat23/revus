@@ -28,9 +28,9 @@ export default function Page() {
     try {
       const response = await Login(data);
       toast.success("Logged in! Successfully!!");
-      Cookies.set("token_login", response.token, { expires: 7 });
+      Cookies.set("token_loginrenter", response.token, { expires: 7 });
       console.log("response : ", response);
-      router.push("/user_dashboard");
+      router.push("/renter_dashboard");
     } catch (error) {
       console.error("Error: ", error);
       toast.error("Login Failed!!");
@@ -112,7 +112,7 @@ export default function Page() {
               <p className="text-primary text-xs font-medium">
                 Don&apos;t have an account?{" "}
                 <span>
-                  <Link href="/user_signup" className="text-[#006AFF]">
+                  <Link href="/renter_signup" className="text-[#006AFF]">
                     Sign Up
                   </Link>
                 </span>

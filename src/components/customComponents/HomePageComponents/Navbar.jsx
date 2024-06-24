@@ -97,10 +97,10 @@ export default function Page() {
             </li>
             <li>
               <Link
-                href="/user_login"
-                className={`hover:text-secondary uppercase ${pathname.includes("user_login") && "text-secondary"}`}
+                href="/renter_login"
+                className={`hover:text-secondary uppercase ${pathname.includes("renter_login") && "text-secondary"}`}
               >
-                user login
+                renter login
               </Link>
             </li>
             <li>

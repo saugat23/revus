@@ -1,4 +1,4 @@
-import CarById from "@/components/customComponents/Dashboard/User/Profile/CarDetails/CarById";
+import CarById from "@/components/customComponents/Dashboard/Renter/Profile/CarDetails/CarById";
 
 export default function page({ params }) {
   const { id } = params;

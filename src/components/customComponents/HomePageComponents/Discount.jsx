@@ -8,14 +8,6 @@ import {
   usePrevNextButtons,
 } from "./EmblaCarouselArrowButtons";
 import CarListing from "./CarListing";
-import Peugeot from "@/../public/homepage/peugeot-508.jpg";
-import Mercedes from "@/../public/homepage/mercedes-amg.jpg";
-import Ford from "@/../public/homepage/ford-st.jpg";
-import BMWFX from "@/../public/homepage/bmw-fx.jpg";
-import AudiS5 from "@/../public/homepage/audi-s5.jpg";
-import BMW7 from "@/../public/homepage/bmw-7.jpg";
-import AudiR8 from "@/../public/homepage/audi-r8.jpg";
-import Jaguar from "@/../public/homepage/jaguar.jpg";
 import { Button } from "@/components/ui/button";
 import Autoplay from "embla-carousel-autoplay";
 import Link from "next/link";

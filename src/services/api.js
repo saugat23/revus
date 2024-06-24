@@ -65,9 +65,14 @@ export async function getCarById(id) {
   }
 }
 
-export async function checkAvailability() {
+export async function checkAvailability(params) {
   try {
-    const response = await axios.get(`${API_BASE_URL}/v1/booking/availability`);
+    const response = await axios.get(
+      `${API_BASE_URL}/v1/booking/availability`,
+      {
+        params: params,
+      },
+    );
     return response.data;
   } catch (error) {
     throw error;

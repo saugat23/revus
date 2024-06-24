@@ -66,7 +66,7 @@ export default function Page() {
       const response = await UserSignup(formData);
       toast.success("Registered Successfully!!");
       console.log("Response: ", response.data);
-      router.push("/user_login");
+      router.push("/renter_login");
     } catch (error) {
       console.error("Error", error);
       toast.error("Register Failed!!");
@@ -242,7 +242,7 @@ export default function Page() {
               <p className="text-primary text-xs font-medium">
                 Already have an account?{" "}
                 <span>
-                  <Link href="/user_login" className="text-[#006AFF]">
+                  <Link href="/renter_login" className="text-[#006AFF]">
                     Login
                   </Link>
                 </span>

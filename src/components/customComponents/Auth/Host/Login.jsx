@@ -28,7 +28,7 @@ export default function Page() {
     try {
       const response = await Login(data);
       toast.success("Logged in! Successfully!!");
-      Cookies.set("token_login", response.token, { expires: 7 });
+      Cookies.set("token_loginhost", response.token, { expires: 7 });
       console.log("response : ", response);
       router.push("/host_dashboard");
     } catch (error) {

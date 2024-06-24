@@ -5,11 +5,11 @@ import { redirect } from "next/navigation";
 
 async function page() {
   const cookieStore = cookies();
-  const loginToken = cookieStore.get("token_login");
-  if (loginToken) {
-    redirect("/user_dashboard/profile");
+  const renterLoginToken = cookieStore.get("token_loginrenter");
+  if (renterLoginToken) {
+    redirect("/renter_dashboard/profile");
   } else {
-    redirect("/user_login");
+    redirect("/renter_login");
   }
 }
 
