@@ -30,15 +30,15 @@ export default function Page() {
   return (
     <>
       <section className="h-auto mt-24">
-        <div className="min-h-[30vh] h-auto relative w-full overflow-hidden">
-          <div className="h-full w-full">
+        <div className="min-h-[30vh] h-auto  w-full overflow-hidden">
+          <div className="h-full w-full relative">
             <Image
               priority
               quality={90}
-              fill={true}
+              fill
               src={CarDetailBG}
               alt="Car Detail BG"
-              className="object-cover bg-cover h-full relative"
+              className="object-cover bg-cover h-full w-full relative"
             />
           </div>
           <div className="absolute top-1/3 lg:top-[45%] left-[40%] -translate-x-1/2 -translate-y-1/2 bg-[#141b22]/90 h-[100vh] w-72 md:w-96 lg:w-[36rem] -rotate-12 flex flex-col justify-center pt-16 lg:pt-10 xl:pt-16 items-center space-y-8">

@@ -1,8 +1,6 @@
 import { Montserrat, Lato, Kumbh_Sans, Handlee } from "next/font/google";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
-import "rsuite/dist/rsuite-no-reset.min.css";
-import { CustomProvider } from "rsuite";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -32,7 +30,7 @@ export default function RootLayout({ children }) {
         className={`${montserrat.variable} ${lato.variable} ${kumbhSans.variable}`}
       >
         <NextTopLoader showSpinner={false} />
-        <CustomProvider>{children}</CustomProvider>
+        {children}
       </body>
     </html>
   );

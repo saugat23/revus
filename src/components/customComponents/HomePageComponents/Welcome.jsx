@@ -2,14 +2,52 @@
 
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import React from "react";
-import { DateRangePicker } from "rsuite";
+import React, { useState } from "react";
+import Datepicker from "react-tailwindcss-datepicker";
 import WelcomeSVG1 from "@/../public/svgs/1.svg";
 import WelcomeSVG2 from "@/../public/svgs/2.svg";
 import WelcomeSVG3 from "@/../public/svgs/3.svg";
 import WelcomeBG from "@/../public/homepage/welcomebg.avif";
+import { checkAvailability } from "@/services/api";
 
 export default function Page() {
+  const [dateValue, setDateValue] = useState({
+    startDate: null,
+    endDate: null,
+  });
+
+  const handleDateValueChange = (newValue) => {
+    console.log("newValue:", newValue);
+    setDateValue(newValue);
+  };
+
+  const [model, setModel] = useState("");
+  function handleModelChange(e) {
+    setModel(e.target.value);
+  }
+
+  const [loading, setLoading] = useState(false);
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const start_date = dateValue.startDate;
+      const end_date = dateValue.endDate;
+      const response = await checkAvailability(formData);
+      Router.push({
+        pathname: "/vehicle_available_listings",
+        query: {
+          start_date: `${dateValue.startDate}`,
+          end_date: `${dateValue.endDate}`,
+        },
+      });
+    } catch (error) {
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <>
       <section className="h-auto w-full bg-white">
@@ -20,9 +58,10 @@ export default function Page() {
                 <span className="text-gray-500">01 </span>
                 WHEN
               </label>
-              <DateRangePicker
+              <Datepicker
                 className="p-3 bg-[#f2f6f7] hover:bg-white hover:scale-y-105 hover:drop-shadow-lg transition-all ease w-full"
-                appearance="subtle"
+                onChange={handleDateValueChange}
+                value={dateValue}
               />
             </div>
             <div
@@ -61,7 +100,10 @@ export default function Page() {
                 <span className="text-gray-500">03 </span>
                 SELECT A MODEL
               </label>
-              <select className="px-3 py-5 bg-[#f2f6f7] hover:bg-white hover:scale-y-105 hover:drop-shadow-lg transition-all ease w-full">
+              <select
+                onChange={handleModelChange}
+                className="px-3 py-5 bg-[#f2f6f7] hover:bg-white hover:scale-y-105 hover:drop-shadow-lg transition-all ease w-full"
+              >
                 <option className="bg-white p-3" value=""></option>
                 <option className="bg-white p-3" value="a4">
                   A4

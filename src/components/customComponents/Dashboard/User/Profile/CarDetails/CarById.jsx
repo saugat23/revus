@@ -9,7 +9,7 @@ import BMW7 from "@/../public/homepage/bmw-7.jpg";
 import AudiR8 from "@/../public/homepage/audi-r8.jpg";
 import Jaguar from "@/../public/homepage/jaguar.jpg";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { DateRangePicker } from "rsuite";
+import Datepicker from "react-tailwindcss-datepicker";
 import { Button } from "@/components/ui/button";
 import { FaPhone, FaPhoneAlt, FaUser } from "react-icons/fa";
 import { FaCircleUser } from "react-icons/fa6";
@@ -235,9 +235,9 @@ export default function Page() {
                   <span className="w-1/2 text-center py-4">$55/Day</span>
                 </h2>
               </div>
-              <DateRangePicker
+              <Datepicker
                 className="p-3 bg-primary-foreground w-full"
-                appearance="subtle"
+                showShortcuts={true}
               />
               <input
                 type="text"

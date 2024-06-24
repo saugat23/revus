@@ -9,7 +9,7 @@ import BMW7 from "@/../public/homepage/bmw-7.jpg";
 import AudiR8 from "@/../public/homepage/audi-r8.jpg";
 import Jaguar from "@/../public/homepage/jaguar.jpg";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { DateRangePicker } from "rsuite";
+import Datepicker from "react-tailwindcss-datepicker";
 import { Button } from "@/components/ui/button";
 import CarDetailBG from "@/../public/cardetailbg.jpeg";
 import { FaCircleUser } from "react-icons/fa6";
@@ -23,8 +23,10 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 
-export default function Page() {
-  const [featuredImage, setFeaturedImage] = useState(AudiR8);
+export default function Page({ data }) {
+  const car = data;
+  console.log(car);
+  const [featuredImage, setFeaturedImage] = useState(car.images[0]);
 
   const handleGalleryClick = (image) => {
     setFeaturedImage(image);
@@ -46,7 +48,7 @@ export default function Page() {
           </div>
           <div className="absolute top-1/3 lg:top-[45%] left-[40%] -translate-x-1/2 -translate-y-1/2 bg-[#141b22]/90 h-[100vh] w-72 md:w-96 lg:w-[36rem] -rotate-12 flex flex-col justify-center pt-16 lg:pt-10 xl:pt-16 items-center space-y-8">
             <h1 className="text-white font-montserrat font-bold xl:text-5xl md:text-4xl text-2xl rotate-12">
-              Lamborghini Urus
+              {car.model}
             </h1>
 
             <div className="ml-3 text-white font-montserrat xl:text-base text-sm font-semibold rotate-12">
@@ -82,48 +84,30 @@ export default function Page() {
                   alt="Car Image"
                   priority
                   className="w-full object-center object-cover"
+                  width={600}
+                  height={500}
                   quality={80}
                 />
               </div>
               <div className="w-full flex lg:justify-stretch justify-between items-center space-x-4 overflow-hidden">
                 <Image
-                  src={Peugeot}
+                  src={car.images[1]}
                   alt={`Car Image`}
                   priority
                   className="object-center object-cover cursor-pointer"
-                  onClick={() => handleGalleryClick(Peugeot)}
+                  onClick={() => handleGalleryClick(car.images[1])}
+                  width={400}
+                  height={300}
                   quality={75}
                 />
                 <Image
-                  src={Mercedes}
+                  src={car.images[2]}
                   alt={`Car Image`}
                   priority
                   className="object-center object-cover cursor-pointer"
-                  onClick={() => handleGalleryClick(Mercedes)}
-                  quality={75}
-                />
-                <Image
-                  src={Ford}
-                  alt={`Car Image`}
-                  priority
-                  className="hidden lg:inline object-center object-cover cursor-pointer"
-                  onClick={() => handleGalleryClick(Ford)}
-                  quality={75}
-                />
-                <Image
-                  src={BMW7}
-                  alt={`Car Image`}
-                  priority
-                  className="hidden lg:block object-center object-cover cursor-pointer"
-                  onClick={() => handleGalleryClick(BMW7)}
-                  quality={75}
-                />
-                <Image
-                  src={Jaguar}
-                  alt={`Car Image`}
-                  priority
-                  className="hidden lg:blockobject-center object-cover cursor-pointer"
-                  onClick={() => handleGalleryClick(Jaguar)}
+                  onClick={() => handleGalleryClick(car.images[2])}
+                  width={400}
+                  height={300}
                   quality={75}
                 />
               </div>
@@ -208,7 +192,7 @@ export default function Page() {
               </div>
               <div className="py-8">
                 <Tabs defaultValue="description" className="w-full">
-                  <TabsList className="!flex !flex-col !lg:flex-row">
+                  <TabsList className="">
                     <TabsTrigger
                       value="description"
                       className="!text-left !lg:text-left p-4 font-semibold data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-secondary"
@@ -305,9 +289,9 @@ export default function Page() {
                   <span className="w-1/2 text-center py-4">$55/Day</span>
                 </h2>
               </div>
-              <DateRangePicker
+              <Datepicker
                 className="p-3 bg-primary-foreground w-full"
-                appearance="subtle"
+                showShortcuts={true}
               />
               <input
                 type="text"

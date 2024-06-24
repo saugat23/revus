@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import {
   PrevButton,
@@ -19,6 +19,7 @@ import Jaguar from "@/../public/homepage/jaguar.jpg";
 import { Button } from "@/components/ui/button";
 import Autoplay from "embla-carousel-autoplay";
 import Link from "next/link";
+import { getAllCars } from "@/services/api";
 
 export default function Page() {
   const [emblaRef, emblaApi] = useEmblaCarousel(
@@ -29,6 +30,19 @@ export default function Page() {
     },
     [Autoplay()],
   );
+  const [cars, setCars] = useState([]);
+
+  useEffect(() => {
+    async function fetchCars() {
+      const response = await getAllCars();
+      console.log(response);
+      setCars(response.cars);
+    }
+
+    fetchCars();
+  }, []);
+
+  console.log(cars);
 
   const {
     prevBtnDisabled,
@@ -53,126 +67,26 @@ export default function Page() {
             <div className="embla  !w-full !2xl:max-w-[80%] !2xl:w-[80%] ml-auto">
               <div className="embla__viewport" ref={emblaRef}>
                 <div className="embla__container">
-                  <div className="embla__slide">
-                    <div className="w-full h-full">
-                      <Link href={`/car_details/1`}>
-                        <CarListing
-                          id={1}
-                          imgSrc={Peugeot}
-                          model="Peugeot 508 Sports"
-                          price={44}
-                          make={2019}
-                          range={2000}
-                          type="Petrol"
-                        />
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="embla__slide">
-                    <div className="w-full h-full">
-                      <Link href={`/car_details/2`}>
-                        <CarListing
-                          id={2}
-                          imgSrc={Mercedes}
-                          model="Mercedes AMG"
-                          price={20}
-                          make={2016}
-                          range={12000}
-                          type="LPG"
-                        />
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="embla__slide">
-                    <div className="w-full h-full">
-                      <Link href={`/car_details/3`}>
-                        <CarListing
-                          id={3}
-                          imgSrc={Ford}
-                          model="Ford Focus ST"
-                          price={62}
-                          make={2019}
-                          range={20000}
-                          type="Diesel"
-                        />
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="embla__slide">
-                    <div className="w-full h-full">
-                      <Link href={`/car_details/4`}>
-                        <CarListing
-                          id={4}
-                          imgSrc={BMWFX}
-                          model="BMW FX"
-                          price={72}
-                          make={2019}
-                          range={8000}
-                          type="Diesel"
-                        />
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="embla__slide">
-                    <div className="w-full h-full">
-                      <Link href={`/car_details/5`}>
-                        <CarListing
-                          id={5}
-                          imgSrc={AudiS5}
-                          model="Audi S5 Sportsback"
-                          price={72}
-                          make={2019}
-                          range={16000}
-                          type="Electric"
-                        />
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="embla__slide">
-                    <div className="w-full h-full">
-                      <Link href={`/car_details/6`}>
-                        <CarListing
-                          id={6}
-                          imgSrc={BMW7}
-                          model="BMW 7 Series"
-                          price={100}
-                          make={2019}
-                          range={12000}
-                          type="Electric"
-                        />
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="embla__slide">
-                    <div className="w-full h-full">
-                      <Link href={`/car_details/7`}>
-                        <CarListing
-                          id={7}
-                          imgSrc={AudiR8}
-                          model="Audi R8"
-                          price={112}
-                          make={2022}
-                          range={12000}
-                          type="Diesel"
-                        />
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="embla__slide">
-                    <div className="w-full h-full">
-                      <Link href={`/car_details/8`}>
-                        <CarListing
-                          id={8}
-                          imgSrc={Jaguar}
-                          model="Jaguar XJ50"
-                          price={102}
-                          make={2020}
-                          range={15000}
-                          type="LPG"
-                        />
-                      </Link>
-                    </div>
-                  </div>
+                  {cars.map((car) => {
+                    return (
+                      <>
+                        <div key={car.car_id} className="embla__slide">
+                          <div className="w-full h-full">
+                            <Link href={`/car_details/${car.car_id}`}>
+                              <CarListing
+                                id={car.car_id}
+                                imgSrc={car.images[0]}
+                                model={car.model}
+                                price={car.daily_rate}
+                                make={car.year}
+                                regNumber={car.registration_number}
+                              />
+                            </Link>
+                          </div>
+                        </div>
+                      </>
+                    );
+                  })}
                 </div>
               </div>
 
@@ -190,6 +104,7 @@ export default function Page() {
               </div>
             </div>
           </div>
+
           <div className="w-full max-w-6xl mx-auto flex flex-col justify-center items-start">
             <Button
               type="button"

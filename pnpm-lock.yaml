@@ -68,6 +68,9 @@ importers:
       react-icons:
         specifier: ^5.2.1
         version: 5.2.1(react@18.3.1)
+      react-tailwindcss-datepicker:
+        specifier: ^1.6.6
+        version: 1.6.6(dayjs@1.11.11)(react@18.3.1)
       rsuite:
         specifier: ^5.64.0
         version: 5.64.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -766,6 +769,9 @@ packages:
   date-fns@2.30.0:
     resolution: {integrity: sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==}
     engines: {node: '>=0.11'}
+
+  dayjs@1.11.11:
+    resolution: {integrity: sha512-okzr3f11N6WuqYtZSvm+F776mB41wRZMhKP+hc34YdW+KmtYYK9iqvHSwo2k9FEH3fhGXvOPV6yz2IcSrfRUDg==}
 
   debug@3.2.7:
     resolution: {integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==}
@@ -1725,6 +1731,12 @@ packages:
     peerDependenciesMeta:
       '@types/react':
         optional: true
+
+  react-tailwindcss-datepicker@1.6.6:
+    resolution: {integrity: sha512-kHSUonRO86PoYQQWPqpaSw2JeEn9OafdLsLBG85zO5Sfs23Ku8Ixt/YO+Is3TCBcFeOKnZgzhGLmP3NAXVlFkA==}
+    peerDependencies:
+      dayjs: ^1.11.6
+      react: ^17.0.2 || ^18.2.0
 
   react-use-set@1.0.0:
     resolution: {integrity: sha512-6BBbOcWc/tOKuwd9gDtdunvOr/g40S0SkCBYvrSJvpI0upzNlHmLoeDvylnoP8PrjQXItClAFxseVGGhEkk7kw==}
@@ -2770,6 +2782,8 @@ snapshots:
   date-fns@2.30.0:
     dependencies:
       '@babel/runtime': 7.24.7
+
+  dayjs@1.11.11: {}
 
   debug@3.2.7:
     dependencies:
@@ -3830,6 +3844,11 @@ snapshots:
       tslib: 2.6.3
     optionalDependencies:
       '@types/react': 18.3.3
+
+  react-tailwindcss-datepicker@1.6.6(dayjs@1.11.11)(react@18.3.1):
+    dependencies:
+      dayjs: 1.11.11
+      react: 18.3.1
 
   react-use-set@1.0.0(react@18.3.1):
     dependencies:

@@ -46,3 +46,30 @@ export async function HostSignup(data) {
     throw error;
   }
 }
+
+export async function getAllCars() {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/v1/car/getall`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getCarById(id) {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/v1/car/getById/${id}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function checkAvailability() {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/v1/booking/availability`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}

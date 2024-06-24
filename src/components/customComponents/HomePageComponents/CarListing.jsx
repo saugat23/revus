@@ -16,6 +16,8 @@ export default function Page({ imgSrc, model, make, range, type, price }) {
             alt={model}
             priority
             quality={90}
+            width={600}
+            height={500}
             className="object-center object-fill"
           />
         </div>
