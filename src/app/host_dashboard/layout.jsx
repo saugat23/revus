@@ -77,9 +77,7 @@ const Layout = ({ children }) => {
           <div className="block md:hidden h-6">
             <IoIosMenu className="h-8 w-8" />
           </div>
-          <div className="min-w-[85%] w-full md:w-[85%] bg-white md:ml-[15%] mt-6">
-            {children}
-          </div>
+          <div className="w-full bg-white mt-6">{children}</div>
         </div>
       </div>
     </>

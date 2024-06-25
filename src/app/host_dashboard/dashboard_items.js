@@ -1,27 +1,28 @@
-import { MdDashboard, MdCampaign } from "react-icons/md";
-import { GiDonerKebab } from "react-icons/gi";
-import { FaUserAlt } from "react-icons/fa";
+import { MdOutlineDashboard } from "react-icons/md";
+import { BiSolidPurchaseTag } from "react-icons/bi";
+import { IoChatbubbleEllipses } from "react-icons/io5";
+import { IoIosNotifications } from "react-icons/io";
 
 const dashboard_items = [
   {
-    title: "Profile",
-    icon: <MdDashboard />,
-    link: "/user_dashboard/profile",
+    title: "Dashboard",
+    icon: <MdOutlineDashboard className="w-7 h-7" />,
+    link: "/host_dashboard/dashboard",
   },
   {
     title: "Past Bookings",
-    icon: <GiDonerKebab />,
-    link: "/user_dashboard/past_bookings",
+    icon: <BiSolidPurchaseTag className="w-7 h-7" />,
+    link: "/host_dashboard/plans_purchased",
   },
   {
     title: "Chat",
-    icon: <MdCampaign />,
-    link: "/user_dashboard/chat",
+    icon: <IoChatbubbleEllipses className="w-7 h-7" />,
+    link: "/host_dashboard/chat",
   },
   {
     title: "Notifications",
-    icon: <FaUserAlt />,
-    link: "/user_dashboard/notifications",
+    icon: <IoIosNotifications className="w-7 h-7" />,
+    link: "/host_dashboard/notifications",
   },
 ];
 

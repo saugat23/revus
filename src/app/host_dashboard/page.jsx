@@ -5,9 +5,9 @@ import { redirect } from "next/navigation";
 
 async function page() {
   const cookieStore = cookies();
-  const loginToken = cookieStore.get("token_login");
-  if (loginToken) {
-    redirect("/host_dashboard/profile");
+  const hostLoginToken = cookieStore.get("token_loginhost");
+  if (hostLoginToken) {
+    redirect("/host_dashboard/dashboard");
   } else {
     redirect("/host_login");
   }
