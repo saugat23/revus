@@ -1,7 +1,5 @@
 "use client";
 import React from "react";
-import ApexChart from "./AreaChart";
-import DonutChart from "./DonutChart";
 import { FaArrowDown, FaArrowUp, FaUser } from "react-icons/fa";
 import Image from "next/image";
 import ChartDecrease from "@/../public/dashboard/host/chartdecrease.svg";
@@ -118,9 +116,7 @@ export default function Page() {
               </span>
             </div>
           </div>
-          <div className="mt-8 w-full">
-            <ApexChart />
-          </div>
+          <div className="mt-8 w-full"></div>
         </div>
         <div className="w-full flex justify-center items-start space-x-8">
           <div className="w-1/2 flex flex-col justify-center items-center space-y-8">
@@ -133,9 +129,7 @@ export default function Page() {
                   Today
                 </span>
               </div>
-              <div className="w-full">
-                <DonutChart />
-              </div>
+              <div className="w-full"></div>
             </div>
             <div className="w-full h-auto shadow-lg flex flex-col justify-center space-y-4 items-start p-4">
               <div className="w-full flex justify-between items-center">
