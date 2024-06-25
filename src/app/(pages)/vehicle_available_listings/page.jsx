@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
+import { Suspense } from "react";
 
 const VehicleAvailableListings = dynamic(
   () =>
@@ -14,7 +15,7 @@ const VehicleAvailableListings = dynamic(
 import { checkAvailability } from "@/services/api";
 import { useSearchParams } from "next/navigation";
 
-export default function Page() {
+function Search() {
   const vehicleParams = useSearchParams();
   const start_date = vehicleParams.get("start_date");
   const end_date = vehicleParams.get("end_date");
@@ -62,6 +63,16 @@ export default function Page() {
   return (
     <>
       <VehicleAvailableListings data={data} />
+    </>
+  );
+}
+
+export default function Page() {
+  return (
+    <>
+      <Suspense>
+        <Search />
+      </Suspense>
     </>
   );
 }
