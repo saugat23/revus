@@ -13,6 +13,7 @@ import withAuthHost from "@/app/withAuthHost";
 import { FaArrowRight } from "react-icons/fa";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { BiUserCircle } from "react-icons/bi";
+import { MdLogout } from "react-icons/md";
 
 const Layout = ({ children }) => {
   const router = useRouter();
@@ -46,8 +47,9 @@ const Layout = ({ children }) => {
                   return (
                     <li
                       key={key}
-                      className={`w-full flex justify-start items-center md:px-2 hover:bg-[#006AFF] rounded-xl text-white my-[2px] ${pathname.includes(item.link) && "bg-[#006AFF]"
-                        }`}
+                      className={`w-full flex justify-start items-center md:px-2 hover:bg-[#006AFF] rounded-xl text-white my-[2px] ${
+                        pathname.includes(item.link) && "bg-[#006AFF]"
+                      }`}
                     >
                       <Link
                         href={item.link}
@@ -67,12 +69,10 @@ const Layout = ({ children }) => {
           <div className="w-full flex justify-center items-center px-3">
             <button
               onClick={handleLogout}
-              className="py-3 w-full rounded-lg bg-[#474747] text-white text-center font-semibold font-montserrat group"
+              className="py-3 w-full rounded-lg bg-[#474747] text-white hover:scale-y-110 text-center font-semibold font-montserrat group flex items-center justify-center space-x-2"
             >
-              Logout{" "}
-              <span className="ml-1">
-                <FaArrowRight className="w-4 h-4 fill-white hidden group-hover:inline transition-all duration-400 ease-in-out" />
-              </span>
+              <MdLogout className="inline w-6 h-6 fill-white group-hover:fill-red-600" />
+              <span>Logout</span>
             </button>
           </div>
         </div>

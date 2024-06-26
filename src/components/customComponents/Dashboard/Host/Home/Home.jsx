@@ -105,7 +105,7 @@ export function BookingsContainer({
   );
 }
 
-export default function Page() {
+export default function Page({ cars }) {
   return (
     <>
       <section className="bg-white h-auto p-6 flex flex-col justify-center items-start space-y-4 font-montserrat text-sm w-[84vw] overflow-hidden">
@@ -141,61 +141,7 @@ export default function Page() {
           <div className="mt-8 w-full"></div>
         </div>
         <div className="w-full flex justify-center items-start space-x-8">
-          <div className="w-1/2 flex flex-col justify-center items-center space-y-8">
-            <div className="w-full h-auto shadow-custom flex flex-col justify-center space-y-4 items-start p-4">
-              <div className="w-full flex justify-between items-center">
-                <h1 className="font-semibold text-gray-500 text-base lg:text-lg xl:text-xl">
-                  Hire Vs Cancel
-                </h1>
-                <span className="text-xs text-gray-500 p-2 bg-gray-100">
-                  Today
-                </span>
-              </div>
-              <div className="w-full"></div>
-            </div>
-            <div className="w-full h-auto shadow-custom flex flex-col justify-center space-y-4 items-start p-4">
-              <div className="w-full flex justify-between items-center">
-                <h1 className="font-semibold text-black text-base lg:text-lg xl:text-xl">
-                  Statistics
-                </h1>
-                <select className="text-black text-xs lg:text-sm bg-transparent p-2 outline-none border border-gray-300 rounded-md">
-                  <option value="Pass 7 Days">Pass 7 Days</option>
-                  <option value="Pass 30 Days">Pass 30 Days</option>
-                </select>
-              </div>
-              <div className="w-full grid grid-cols-2 gap-8">
-                <CustomersContainer
-                  name="Customers"
-                  decrease={true}
-                  increase={false}
-                  count={20}
-                  percentage={8}
-                />
-                <CustomersContainer
-                  name="Orders"
-                  decrease={false}
-                  increase={true}
-                  count={27}
-                  percentage={12}
-                />
-                <CustomersContainer
-                  name="Income"
-                  decrease={false}
-                  increase={true}
-                  count={"$2000"}
-                  percentage={24}
-                />
-                <CustomersContainer
-                  name="Expenses"
-                  decrease={true}
-                  increase={false}
-                  count={"$425"}
-                  percentage={10}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="w-1/2 flex flex-col justify-center items-center p-4 space-y-4 shadow-custom rounded-xl">
+          <div className="w-full flex flex-col justify-center items-center p-4 space-y-4 shadow-custom rounded-xl">
             <div className="w-full flex justify-between items-center">
               <h1 className="font-semibold text-black text-base lg:text-lg xl:text-xl">
                 Bookings
@@ -309,9 +255,6 @@ export default function Page() {
                   Car ID
                 </TableHead>
                 <TableHead className="text-center font-normal text-gray-700">
-                  Make
-                </TableHead>
-                <TableHead className="text-center font-normal text-gray-700">
                   Model
                 </TableHead>
                 <TableHead className="text-center font-normal text-gray-700">
@@ -326,51 +269,32 @@ export default function Page() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              <TableRow>
-                <TableCell className="font-medium text-center">1</TableCell>
-                <TableCell className="font-medium text-center">
-                  Nissan
-                </TableCell>
-                <TableCell className="font-medium text-center">
-                  Altima
-                </TableCell>
-                <TableCell className="font-medium text-center">2020</TableCell>
-                <TableCell className="font-medium text-center">$55</TableCell>
-                <TableCell className="flex space-x-2 items-center justify-center">
-                  <div className="w-3 h-3 mr-1 bg-green-500 outline outline-green-500 outline-offset-1 rounded-full"></div>
-                  <span>Available</span>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="font-medium text-center">1</TableCell>
-                <TableCell className="font-medium text-center">
-                  Nissan
-                </TableCell>
-                <TableCell className="font-medium text-center">
-                  Altima
-                </TableCell>
-                <TableCell className="font-medium text-center">2020</TableCell>
-                <TableCell className="font-medium text-center">$55</TableCell>
-                <TableCell className="flex space-x-2 items-center justify-center">
-                  <div className="w-3 h-3 mr-1 bg-green-500 outline outline-green-500 outline-offset-1 rounded-full"></div>
-                  <span>Available</span>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="font-medium text-center">1</TableCell>
-                <TableCell className="font-medium text-center">
-                  Nissan
-                </TableCell>
-                <TableCell className="font-medium text-center">
-                  Altima
-                </TableCell>
-                <TableCell className="font-medium text-center">2020</TableCell>
-                <TableCell className="font-medium text-center">$55</TableCell>
-                <TableCell className="flex space-x-2 items-center justify-center">
-                  <div className="w-3 h-3 mr-1 bg-green-500 outline outline-green-500 outline-offset-1 rounded-full"></div>
-                  <span>Available</span>
-                </TableCell>
-              </TableRow>
+              {cars.map((car) => {
+                return (
+                  <TableRow key={car.car_id}>
+                    <TableCell className="font-medium text-center">
+                      {car.car_id}
+                    </TableCell>
+                    <TableCell className="font-medium text-center">
+                      {car.model}
+                    </TableCell>
+                    <TableCell className="font-medium text-center">
+                      {car.year}
+                    </TableCell>
+                    <TableCell className="font-medium text-center">
+                      {car.daily_rate}
+                    </TableCell>
+                    <TableCell className="flex space-x-2 items-center justify-center">
+                      <div
+                        className={`w-3 h-3 mr-1 outline outline-offset-1 ${car.availability ? "bg-green-500 outline-green-500" : "bg-red-500 outline-red-500"} rounded-full`}
+                      ></div>
+                      <span>
+                        {car.availability ? "Available" : "Not Available"}
+                      </span>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
             </TableBody>
           </Table>
         </div>

@@ -78,3 +78,31 @@ export async function checkAvailability(params) {
     throw error;
   }
 }
+
+export async function getAllBookedCar() {
+  // response =>
+  // {
+  //  "success" : true,
+  //  "bookings" : []
+  // }
+  try {
+    const response = await axios.get(`${API_BASE_URL}/v1/booking/getall`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getAllIncidentReports() {
+  // response =>
+  // {
+  //  "success" : true,
+  //  "incidentReports" : []
+  // }
+  try {
+    const response = await axios.get(`${API_BASE_URL}/v1/incident/getall`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
