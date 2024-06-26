@@ -16,42 +16,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-export function CustomersContainer({
-  name,
-  count,
-  increase,
-  decrease,
-  percentage,
-}) {
-  return (
-    <div className="w-auto rounded-xl border border-gray-300 p-4 flex flex-col justify-center items-start space-y-3">
-      <div className="w-full flex justify-between items-center">
-        <h2 className="text-black font-semibold text-xs lg:text-sm">{name}</h2>
-        <span>
-          {increase ? (
-            <FaArrowUp className="inline mr-1 w-5 h-5 fill-green-500" />
-          ) : (
-            <FaArrowDown className="inline mr-1 w-5 h-5 fill-red-500" />
-          )}
-          <span
-            className={`font-medium ${increase ? "text-green-500" : "text-red-500"}`}
-          >
-            {percentage} %
-          </span>
-        </span>
-      </div>
-      <h2 className="text-sm lg:text-base font-semibold">{count}</h2>
-      <Image
-        src={increase ? ChartIncrease : ChartDecrease}
-        alt="Chart"
-        priority
-        quality={90}
-        className="object-center object-cover w-full"
-      />
-    </div>
-  );
-}
-
 export function BookingsContainer({
   id,
   dueDate,
