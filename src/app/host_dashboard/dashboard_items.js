@@ -1,28 +1,28 @@
 import { MdOutlineDashboard } from "react-icons/md";
-import { BiSolidPurchaseTag } from "react-icons/bi";
-import { IoChatbubbleEllipses } from "react-icons/io5";
-import { IoIosNotifications } from "react-icons/io";
+import { IoCarOutline } from "react-icons/io5";
+import { TbReservedLine } from "react-icons/tb";
+import { IoAddCircle } from "react-icons/io5";
 
 const dashboard_items = [
   {
-    title: "Dashboard",
+    title: "Home",
     icon: <MdOutlineDashboard className="w-7 h-7" />,
-    link: "/host_dashboard/dashboard",
+    link: "/host_dashboard/home",
   },
   {
-    title: "Past Bookings",
-    icon: <BiSolidPurchaseTag className="w-7 h-7" />,
-    link: "/host_dashboard/plans_purchased",
+    title: "Listings",
+    icon: <IoCarOutline className="w-7 h-7" />,
+    link: "/host_dashboard/listings",
   },
   {
-    title: "Chat",
-    icon: <IoChatbubbleEllipses className="w-7 h-7" />,
-    link: "/host_dashboard/chat",
+    title: "Booked/Reserved",
+    icon: <TbReservedLine className="w-7 h-7" />,
+    link: "/host_dashboard/booked",
   },
   {
-    title: "Notifications",
-    icon: <IoIosNotifications className="w-7 h-7" />,
-    link: "/host_dashboard/notifications",
+    title: "List Car",
+    icon: <IoAddCircle className="w-7 h-7" />,
+    link: "/host_dashboard/list_car",
   },
 ];
 

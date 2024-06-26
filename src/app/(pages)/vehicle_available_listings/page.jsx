@@ -12,7 +12,7 @@ const VehicleAvailableListings = dynamic(
     ssr: false,
   },
 );
-import { checkAvailability } from "@/services/api";
+import { checkAvailability, getAllCars } from "@/services/api";
 import { useSearchParams } from "next/navigation";
 
 function Search() {
@@ -21,6 +21,7 @@ function Search() {
   const end_date = vehicleParams.get("end_date");
   const model = vehicleParams.get("model");
   const [data, setData] = useState(null);
+  const [allCars, setAllCars] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -56,13 +57,27 @@ function Search() {
     fetchListings();
   }, [start_date, end_date, model]);
 
+  useEffect(() => {
+    async function fetchAllCars() {
+      try {
+        console.log("Fetching All Cars");
+        const response = await getAllCars();
+        setAllCars(response.cars);
+      } catch (error) {
+        console.error("Error: ", error);
+      }
+    }
+
+    fetchAllCars();
+  }, []);
+
   if (loading) {
     return <div>Loading...</div>;
   }
 
   return (
     <>
-      <VehicleAvailableListings data={data} />
+      <VehicleAvailableListings data={data} allCars={allCars} />
     </>
   );
 }

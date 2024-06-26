@@ -50,8 +50,8 @@ function Listings({ imgSrc, model, deposit, make, price }) {
           </button>
         </div>
       </div>
-      <div className="w-full bg-transparent py-6 flex flex-col justify-center items-center space-y-5">
-        <div className="w-full flex justify-around items-center font-montserrat text-xs pb-5 border-b border-b-gray-400">
+      <div className="w-full bg-transparent py-6 flex flex-col justify-center items-center space-y-3">
+        <div className="w-full flex justify-around items-center font-montserrat text-xs pb-3 border-b border-b-gray-400">
           <div className="px-2 flex space-x-2 border-r border-r-gray-400">
             <p>{(price * 1).toFixed(0)} /day</p>
           </div>
@@ -70,7 +70,7 @@ function Listings({ imgSrc, model, deposit, make, price }) {
           )}{" "}
           {model}
         </h1>
-        <div className="w-full flex justify-around items-center font-montserrat text-xs pb-5 border-b border-b-gray-400">
+        <div className="w-full flex justify-around items-center font-montserrat text-xs pb-3 border-b border-b-gray-400">
           <div className="px-2 flex space-x-2 border-r border-r-gray-400">
             <p>{make}</p>
           </div>
@@ -92,23 +92,24 @@ function Listings({ imgSrc, model, deposit, make, price }) {
   );
 }
 
-export default function Page({ data }) {
+export default function Page({ data, allCars }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     slidesToScroll: 1,
     loop: "true",
     align: "center",
   });
+  const [filteredCars, setFilteredCars] = useState([]);
   const [cars, setCars] = useState([]);
 
   useEffect(() => {
     if (data && data.availableCars) {
-      setCars(data.availableCars);
+      setFilteredCars(data.availableCars);
     }
   }, [data]);
 
   useEffect(() => {
-    console.log("cars is ", cars); // Log cars to ensure it's an array of car objects
-  }, [cars]);
+    setCars(allCars);
+  }, [allCars]);
 
   const {
     prevBtnDisabled,
@@ -157,7 +158,7 @@ export default function Page({ data }) {
             Featured Cars
           </h1>
 
-          <div className="w-full flex justify-center items-center">
+          <div className="w-full flex justify-center items-center mt-6">
             <div className="listingsembla">
               <div className="listingsembla__viewport" ref={emblaRef}>
                 <div className="listingsembla__container">
@@ -165,7 +166,7 @@ export default function Page({ data }) {
                     return (
                       <div
                         key={car.car_id}
-                        className={`listingsembla__slide !basis-1/${cars.length}`}
+                        className={`listingsembla__slide !basis-1/${cars.length} !pl-4`}
                       >
                         <Listings
                           imgSrc={car.images[0]}
@@ -195,15 +196,14 @@ export default function Page({ data }) {
           </div>
         </div>
 
-        <div className="max-w-6xl w-full mx-auto px-3 lg:px-0 flex flex-col lg:flex-row justify-center items-start space-x-5 py-8 lg:py-10 xl:py-12 font-montserrat text-sm lg:text-base xl:text-lg">
+        <div className="max-w-6xl w-full mx-auto px-3 lg:px-0 flex flex-col lg:flex-row justify-center items-start space-x-9 py-8 lg:py-10 xl:py-12 font-montserrat text-sm lg:text-base xl:text-lg">
           <div className="w-full lg:w-1/4 flex flex-col justify-center items-center space-y-5 font-montserrat text-sm text-primary font-semibold">
             <div className="w-full bg-[#F1F5FA] flex flex-col justify-center items-center space-y-5">
-              <div className="w-full bg-[#253241] flex flex-col items-center text-primary-foreground">
-                <h2 className="w-full py-4 border-b border-b-gray-500 text-center">
+              <div className="w-full bg-[#253241] py-3 flex flex-col items-center text-primary-foreground">
+                <h2 className="w-full py-4 text-center">
                   <span className="font-bold mb-1">SEARCH A CAR</span>
                 </h2>
               </div>
-
               <input
                 type="text"
                 name="pickup_location"
@@ -311,7 +311,27 @@ export default function Page({ data }) {
             </div>
           </div>
 
-          <div className="w-full lg:w-3/4 flex flex-col justify-center items-center space-y-5 font-montserrat text-sm text-primary font-semibold"></div>
+          <div className="w-full lg:w-3/4 flex flex-col justify-center items-center space-y-5 font-montserrat text-sm text-primary font-semibold">
+            <div className="w-full border-b border-b-gray-400 pb-4 flex justify-between items-center">
+              <select className="bg-transparent p-3 outline-none border border-gray-300 text-gray-700 rounded-md hover:shadow-custom">
+                <option value={9}>9 Autos</option>
+                <option value={11}>11 Autos</option>
+              </select>
+            </div>
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-7">
+              {filteredCars.map((car) => {
+                return (
+                  <Listings
+                    key={car.car_id}
+                    imgSrc={car.images[0]}
+                    model={car.model}
+                    make={car.year}
+                    price={car.daily_rate}
+                  />
+                );
+              })}
+            </div>
+          </div>
         </div>
       </section>
     </>
