@@ -79,6 +79,7 @@ module.exports = {
         montserrat: ["var(--font-montserrat)"],
         lato: ["var(--font-lato)"],
         kumbhsans: ["var(--font-kumbhsans)"],
+        inter: ["var(--font-inter)"],
       },
     },
   },

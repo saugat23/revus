@@ -1,89 +1,116 @@
 "use client";
 
-import React, { useState } from "react";
-import ReactApexChart from "react-apexcharts";
+import {
+  AreaChart,
+  Area,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+} from "recharts";
 
-const ApexChart = () => {
-  const [series] = useState([
-    {
-      name: "series1",
-      data: [250, 200, 220, 180, 190, 190, 230, 240, 220, 230, 220, 210, 200],
-    },
-    {
-      name: "series2",
-      data: [100, 150, 180, 140, 170, 220, 260, 200, 160, 130, 100, 80, 100],
-    },
-  ]);
+const productSales = [
+  {
+    name: "Jan",
+    product1: 250,
+    product2: 100,
+  },
+  {
+    name: "Feb",
+    product1: 200,
+    product2: 150,
+  },
+  {
+    name: "Mar",
+    product1: 270,
+    product2: 90,
+  },
+  {
+    name: "Apr",
+    product1: 320,
+    product2: 150,
+  },
+  {
+    name: "May",
+    product1: 260,
+    product2: 170,
+  },
+  {
+    name: "Jun",
+    product1: 200,
+    product2: 130,
+  },
+  {
+    name: "Jul",
+    product1: 270,
+    product2: 90,
+  },
+  {
+    name: "Aug",
+    product1: 190,
+    product2: 130,
+  },
+  {
+    name: "Sep",
+    product1: 230,
+    product2: 160,
+  },
+  {
+    name: "Oct",
+    product1: 200,
+    product2: 130,
+  },
+  {
+    name: "Nov",
+    product1: 180,
+    product2: 90,
+  },
+  {
+    name: "Dec",
+    product1: 220,
+    product2: 130,
+  },
+];
 
-  const [options] = useState({
-    chart: {
-      height: 350,
-      type: "area",
-    },
-    dataLabels: {
-      enabled: false,
-    },
-    legend: {
-      show: false,
-    },
-    stroke: {
-      curve: "smooth",
-      width: [1, 1],
-      colors: ["#006AFF", "#6B7280"],
-      dashArray: [0, 4],
-    },
-    fill: {
-      type: "gradient",
-      gradient: {
-        shadeIntensity: 1,
-        opacityFrom: 0.7,
-        opacityTo: 0.9,
-        stops: [0, 90, 100],
-      },
-    },
-    xaxis: {
-      type: "month",
-      categories: [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec",
-      ],
-    },
-    yaxis: {
-      show: true,
-      showAlways: true,
-      type: "currency",
-      categories: ["$0.00", "$100k", "$200k", "$300k"],
-    },
-    tooltip: {
-      x: {
-        format: "dd/MM/yy HH:mm",
-      },
-    },
-  });
-
+const AreaChartComponent = () => {
   return (
-    <div>
-      <div id="chart">
-        <ReactApexChart
-          options={options}
-          series={series}
-          type="area"
-          height={350}
+    <ResponsiveContainer width="100%" height="100%">
+      <AreaChart className="w-full h-full" data={productSales}>
+        <defs>
+          <linearGradient id="colorUv" x1="1" y1="1" x2="0" y2="0">
+            <stop offset="100%" stopColor="#006AFF" stopOpacity={0.5} />
+            <stop offset="30%" stopColor="#FFFFFF" stopOpacity={0.5} />
+          </linearGradient>
+        </defs>
+        <defs>
+          <linearGradient id="colorUvGray" x1="1" y1="1" x2="0" y2="0">
+            <stop offset="100%" stopColor="#6B7280" stopOpacity={0.5} />
+            <stop offset="30%" stopColor="#FFFFFF" stopOpacity={0.5} />
+          </linearGradient>
+        </defs>
+        <YAxis />
+        <XAxis dataKey="name" />
+        <CartesianGrid strokeDasharray="5 5" />
+
+        <Tooltip />
+        <Area
+          type="monotone"
+          dataKey="product1"
+          stroke="#6B7280"
+          fill="url(#colorUvGray)"
+          stackId="1"
         />
-      </div>
-      <div id="html-dist"></div>
-    </div>
+        <Area
+          type="monotone"
+          dataKey="product2"
+          stroke="#006AFF"
+          fill="url(#colorUv)"
+          stackId="1"
+        />
+      </AreaChart>
+    </ResponsiveContainer>
   );
 };
 
-export default ApexChart;
+export default AreaChartComponent;

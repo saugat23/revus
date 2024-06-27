@@ -12,6 +12,7 @@ import { Toaster } from "sonner";
 import Loader from "@/components/customComponents/Loader";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
+import { BiSolidHide, BiSolidShow } from "react-icons/bi";
 
 export default function Page() {
   const {
@@ -22,6 +23,7 @@ export default function Page() {
   } = useForm();
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const [showPassword, setShowPassword] = useState(false);
 
   async function onSubmit(data) {
     setLoading(true);
@@ -81,14 +83,26 @@ export default function Page() {
             <div className="w-full relative mt-4">
               <FaKey className="inline w-4 h-4 fill-gray-600 absolute top-1/2 left-5 -translate-x-1/2 -translate-y-1/2" />
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 {...register("password", {
                   required: "Password is required!",
                 })}
                 placeholder="Password"
                 className="bg-gray-100 rounded-lg pl-10 pr-3 py-4 w-full h-full font-medium text-sm outline-none"
               />
+              {showPassword ? (
+                <BiSolidHide
+                  className="fill-gray-600 w-5 h-5 absolute top-1/2 right-4 -translate-y-1/2"
+                  onClick={() => setShowPassword(!showPassword)}
+                />
+              ) : (
+                <BiSolidShow
+                  className="fill-gray-600 w-5 h-5 absolute top-1/2 right-4 -translate-y-1/2"
+                  onClick={() => setShowPassword(!showPassword)}
+                />
+              )}
             </div>
+
             {errors.password && (
               <p className="text-red-500 ml-4 text-sm font-semibold mt-2">{`${errors.password.message}`}</p>
             )}

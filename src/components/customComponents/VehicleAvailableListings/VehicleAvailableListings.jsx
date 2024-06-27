@@ -319,6 +319,11 @@ export default function Page({ data, allCars }) {
               </select>
             </div>
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-7">
+              {filteredCars.length == 0 && (
+                <p className="font-semibold text-center text-base lg:text-lg xl:text-xl">
+                  No Cars Found.
+                </p>
+              )}
               {filteredCars.map((car) => {
                 return (
                   <Listings

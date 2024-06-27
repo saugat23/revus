@@ -12,6 +12,7 @@ import { Toaster, toast } from "sonner";
 import { TbLicense } from "react-icons/tb";
 import { UserSignup } from "@/services/api";
 import Loader from "@/components/customComponents/Loader";
+import { BiSolidHide, BiSolidShow } from "react-icons/bi";
 
 export default function Page() {
   const {
@@ -22,6 +23,7 @@ export default function Page() {
   } = useForm();
 
   const router = useRouter();
+  const [showPassword, setShowPassword] = useState(false);
 
   const [previewUrls, setPreviewUrls] = useState({
     profile_picture: "",
@@ -148,10 +150,21 @@ export default function Page() {
                 {...register("password", {
                   required: "Password is required!",
                 })}
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="Password"
                 className="bg-gray-100 rounded-lg pl-10 pr-3 py-4 w-full h-full font-medium text-sm outline-none"
               />
+              {showPassword ? (
+                <BiSolidHide
+                  className="fill-gray-600 w-5 h-5 absolute top-1/2 right-4 -translate-y-1/2"
+                  onClick={() => setShowPassword(!showPassword)}
+                />
+              ) : (
+                <BiSolidShow
+                  className="fill-gray-600 w-5 h-5 absolute top-1/2 right-4 -translate-y-1/2"
+                  onClick={() => setShowPassword(!showPassword)}
+                />
+              )}
             </div>
             {errors.password && (
               <p className="text-red-500 ml-4 text-sm font-semibold mt-2">{`${errors.password.message}`}</p>

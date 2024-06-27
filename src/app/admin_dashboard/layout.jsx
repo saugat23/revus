@@ -24,8 +24,7 @@ const Layout = ({ children }) => {
     currentDate.setDate(currentDate.getDate() - 1);
     let yesterday = currentDate;
 
-    Cookies.set("token_loginhost", "", { expires: yesterday });
-    router.push("/host_login");
+    router.push("/admin_login");
   }
 
   return (
@@ -74,28 +73,7 @@ const Layout = ({ children }) => {
           </div>
         </div>
 
-        <div className="min-w-[85%] w-full md:w-[85%] bg-[#FAFAFA] fixed ml-[15%] h-[10vh]">
-          <div className="flex justify-between w-full px-4 py-6 shadow-custom bg-white">
-            <div className="flex flex-col justify-center items-start">
-              <h3 className="font-montserrat font-semibold text-primary text-base lg:text-lg xl:text-xl">
-                Welcome{" "}
-                <PiHandWavingFill className="inline h-7 w-7 fill-yellow-600" />
-              </h3>
-            </div>
-            <div className="flex justify-center items-center space-x-3">
-              <p className="text-gray-400 text-xs lg:text-sm">
-                {today.toDateString()}
-              </p>
-              <IoNotificationsOutline className="p-1 w-7 h-7 bg-gray-100 rounded-full" />
-              <BiUserCircle className="w-6 h-6 fill-gray-600" />
-              <select className="bg-transparent p-2 outline-none font-semibold text-xs lg:text-sm">
-                <option value="Tom David">Tom David</option>
-                <option value="David Tom">David Tom</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div className="w-full bg-white mt-[10vh] ml-[15vw]">{children}</div>
+        <div className="w-full bg-white ml-[15vw]">{children}</div>
       </div>
     </>
   );

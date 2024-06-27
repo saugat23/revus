@@ -1,9 +1,6 @@
 "use client";
 import React from "react";
-import { FaArrowDown, FaArrowUp, FaSearch, FaUser } from "react-icons/fa";
-import Image from "next/image";
-import ChartDecrease from "@/../public/dashboard/host/chartdecrease.svg";
-import ChartIncrease from "@/../public/dashboard/host/chartincrease.svg";
+import { FaUser } from "react-icons/fa";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { HiOutlinePhone } from "react-icons/hi2";
 import { CiSearch } from "react-icons/ci";
@@ -15,6 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import AreaChartComponent from "./AreaChart";
 
 export function BookingsContainer({
   id,
@@ -102,7 +100,9 @@ export default function Page({ cars }) {
               </span>
             </div>
           </div>
-          <div className="mt-8 w-full"></div>
+          <div className="mt-8 w-full h-80">
+            <AreaChartComponent />
+          </div>
         </div>
         <div className="w-full flex justify-center items-start space-x-8">
           <div className="w-full flex flex-col justify-center items-center p-4 space-y-4 shadow-custom rounded-xl">

@@ -4,7 +4,6 @@ import Image from "next/image";
 import React, { useState } from "react";
 import AuthBG from "@/../public/authbg.jpeg";
 import { FaKey, FaMobile, FaUser } from "react-icons/fa6";
-import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { Login } from "@/services/api";
 import { toast } from "sonner";
@@ -28,11 +27,8 @@ export default function Page() {
   async function onSubmit(data) {
     setLoading(true);
     try {
-      const response = await Login(data);
       toast.success("Logged in! Successfully!!");
-      Cookies.set("token_loginhost", response.token, { expires: 7 });
-      console.log("response : ", response);
-      router.push("/host_dashboard");
+      router.push("/admin_dashboard");
     } catch (error) {
       console.error("Error: ", error);
       toast.error("Login Failed!!");
@@ -119,17 +115,6 @@ export default function Page() {
                   "Log In"
                 )}
               </button>
-            </div>
-
-            <div className="w-full flex justify-center items-center mt-4">
-              <p className="text-primary text-xs font-medium">
-                Don&apos;t have an account?{" "}
-                <span>
-                  <Link href="/host_signup" className="text-[#006AFF]">
-                    Sign Up
-                  </Link>
-                </span>
-              </p>
             </div>
           </form>
         </div>
